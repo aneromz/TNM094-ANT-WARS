@@ -4,4 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PerScene.unity
+    guid: 7757d9f29fb8b0247bf3920552388944
+  - enabled: 1
+    path: Assets/ArucoUnity/Scenes/CalibrateCamera.unity
+    guid: 8c301b55ddf701049a329b61f6faeca0
+  - enabled: 1
+    path: Assets/ArucoUnity/Scenes/TrackMarkers.unity
+    guid: 6607aee97cfd1034bacf07d7d3978cae
+  m_configObjects: {}
