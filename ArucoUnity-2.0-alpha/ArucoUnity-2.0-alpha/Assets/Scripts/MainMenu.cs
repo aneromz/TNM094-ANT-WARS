@@ -20,4 +20,10 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene("PerScene");
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit game!");
+        Application.Quit();
+    }
 }
