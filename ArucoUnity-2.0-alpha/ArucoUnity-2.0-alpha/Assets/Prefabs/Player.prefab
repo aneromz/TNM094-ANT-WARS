@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114955052158065990}
   - component: {fileID: 114239965934352102}
   - component: {fileID: 114308583545762690}
+  - component: {fileID: 114280606195806562}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -60,7 +61,7 @@ GameObject:
   - component: {fileID: 223456325414569166}
   - component: {fileID: 114751343079779094}
   - component: {fileID: 114598634408187294}
-  - component: {fileID: 114282235851306534}
+  - component: {fileID: 114604358328069532}
   m_Layer: 5
   m_Name: Healthbar Canvas
   m_TagString: Untagged
@@ -397,17 +398,20 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1937897902888734, guid: 2a3af30a6aad8a148b32453f558e425a,
     type: 2}
   bulletSpawn: {fileID: 4824658975778370}
---- !u!114 &114282235851306534
+--- !u!114 &114280606195806562
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1564115321862902}
+  m_GameObject: {fileID: 1257329589089656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d00598270f6c88b4a9a8d2372f53d04f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a1de721fd7849b489d39d69cb9559be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 100
+  healthbar: {fileID: 224062736305430562}
+  destroyOnDeath: 0
 --- !u!114 &114308583545762690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,6 +449,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114604358328069532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1564115321862902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00598270f6c88b4a9a8d2372f53d04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114751343079779094
 MonoBehaviour:
   m_ObjectHideFlags: 1
