@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ArucoUnity/Scenes/TrackMarkers.unity
+    guid: 6607aee97cfd1034bacf07d7d3978cae
+  m_configObjects: {}
