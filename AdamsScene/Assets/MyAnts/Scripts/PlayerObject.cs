@@ -12,10 +12,25 @@ public class PlayerObject : NetworkBehaviour {
 			return;
 		}
 
+		CmdSpawnMyAnt();
+
 	}
+
+	public GameObject PlayerAntPrefab;
 	
 	// Update is called once per frame
 	void Update () {
+
+
+
 		
+	}
+
+	[Command]
+	void CmdSpawnMyAnt()
+	{
+		GameObject ant = Instantiate (PlayerAntPrefab);
+		NetworkServer.Spawn(ant);
+
 	}
 }

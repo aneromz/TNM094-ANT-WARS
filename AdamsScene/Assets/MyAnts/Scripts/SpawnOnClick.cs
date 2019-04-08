@@ -9,7 +9,7 @@ public class SpawnOnClick : MonoBehaviour {
 		
 	void OnMouseDown()
 		{
-		GameObject ant2 = (GameObject)Instantiate (ant, transform.position, transform.rotation);
+			Instantiate (ant, transform.position, transform.rotation);
 		}
 
 }

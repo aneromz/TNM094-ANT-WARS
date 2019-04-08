@@ -1,0 +1,141 @@
+fileFormatVersion: 2
+guid: cdede46fb338a4d468ec8683acabfd2c
+timeCreated: 1552470980
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ant.fbx
+    100002: Back Left Leg
+    100004: Back Right Leg
+    100006: //RootNode
+    100008: Cylinder001
+    100010: Cylinder002
+    100012: Cylinder003
+    100014: Front Left Leg
+    100016: Front Left Leg 1
+    100018: Middle Left Leg
+    100020: Middle Right Leg
+    100022: Normal Ant
+    100024: "Spr\xF6t Left"
+    100026: "Spr\xF6t Right"
+    100028: T_texture
+    400000: ant.fbx
+    400002: Back Left Leg
+    400004: Back Right Leg
+    400006: //RootNode
+    400008: Cylinder001
+    400010: Cylinder002
+    400012: Cylinder003
+    400014: Front Left Leg
+    400016: Front Left Leg 1
+    400018: Middle Left Leg
+    400020: Middle Right Leg
+    400022: Normal Ant
+    400024: "Spr\xF6t Left"
+    400026: "Spr\xF6t Right"
+    400028: T_texture
+    2300000: Back Left Leg
+    2300002: Back Right Leg
+    2300004: Cylinder001
+    2300006: Cylinder002
+    2300008: Cylinder003
+    2300010: Front Left Leg
+    2300012: Front Left Leg 1
+    2300014: Middle Left Leg
+    2300016: Middle Right Leg
+    2300018: "Spr\xF6t Left"
+    2300020: "Spr\xF6t Right"
+    2300022: T_texture
+    3300000: Back Left Leg
+    3300002: Back Right Leg
+    3300004: Cylinder001
+    3300006: Cylinder002
+    3300008: Cylinder003
+    3300010: Front Left Leg
+    3300012: Front Left Leg 1
+    3300014: Middle Left Leg
+    3300016: Middle Right Leg
+    3300018: "Spr\xF6t Left"
+    3300020: "Spr\xF6t Right"
+    3300022: T_texture
+    4300000: T_texture
+    4300002: Back Left Leg
+    4300004: Back Right Leg
+    4300006: Cylinder001
+    4300008: Cylinder002
+    4300010: Cylinder003
+    4300012: Front Left Leg
+    4300014: Front Left Leg
+    4300016: Middle Left Leg
+    4300018: Middle Right Leg
+    4300020: "Spr\xF6t Left"
+    4300022: "Spr\xF6t Right"
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
