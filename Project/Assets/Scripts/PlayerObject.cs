@@ -8,18 +8,16 @@ public class PlayerObject : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		if (isLocalPlayer == false) {
-			return;
-		}
-
-		CmdSpawnMyAnt();
-
 	}
 
 	public GameObject PlayerAntPrefab;
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (isLocalPlayer == false) {
+			return;
+		}
 
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			CmdSpawnMyAnt ();
