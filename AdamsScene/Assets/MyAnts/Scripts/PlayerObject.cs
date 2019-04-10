@@ -21,7 +21,9 @@ public class PlayerObject : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			CmdSpawnMyAnt ();
+		}
 
 		
 	}
@@ -30,7 +32,7 @@ public class PlayerObject : NetworkBehaviour {
 	void CmdSpawnMyAnt()
 	{
 		GameObject ant = Instantiate (PlayerAntPrefab);
-		NetworkServer.Spawn(ant);
+		NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
 
 	}
 }

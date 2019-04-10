@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-//using UnityEngine.Networking;
+using UnityEngine.Networking;
 
-public class AgentControl : MonoBehaviour {
+public class AgentControl : NetworkBehaviour {
 
 
 	public Transform home;
@@ -18,13 +18,24 @@ public class AgentControl : MonoBehaviour {
 
 	void Update (){
 		agent.SetDestination(home.position);
+
+		if (hasAuthority == false) {
+			return;
+		}
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			CmdDestroyAnt ();
+		}
+
 	}
-
-
+		
 	void OnMouseDown(){
-		Destroy (gameObject);
+			CmdDestroyAnt ();
 	}
 
-
+	[Command]
+	void CmdDestroyAnt(){
+			Destroy (gameObject);
+	}
 
 }
