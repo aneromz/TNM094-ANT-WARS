@@ -11,6 +11,6 @@ public struct LanBroadcastInfo
         ipAddress = fromAddress.Substring(fromAddress.LastIndexOf(":") + 1, fromAddress.Length - (fromAddress.LastIndexOf(":") + 1));
         string portText = data.Substring(data.LastIndexOf(":") + 1, data.Length - (data.LastIndexOf(":") + 1));
         port = 7777;
-        broadcastName = "Ant Room";
+        broadcastName = "Local Ant Room";
     }
 }
