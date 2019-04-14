@@ -56,4 +56,14 @@ public class PlayerObject : NetworkBehaviour {
 
 		NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
 	}
+
+    [Command]
+    public void CmdSpawnAnt(Vector3 position, Quaternion rotation)
+    {
+        GameObject ant = Instantiate(antPrefab, position, rotation);
+
+        NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
+    }
+
+
 }
