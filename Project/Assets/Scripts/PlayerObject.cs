@@ -5,13 +5,14 @@ using UnityEngine.Networking;
 
 public class PlayerObject : NetworkBehaviour {
 
-	public GameObject antPrefab;
+	public GameObject BlueAntPrefab;
+    public GameObject RedAntPrefab;
 
     public Transform BlueLeftSpawn;
     public Transform BlueMiddleSpawn;
     public Transform BlueRightSpawn;
 
-    private bool blue = false;
+    private bool blue = true;
 
     public Transform RedLeftSpawn;
     public Transform RedMiddleSpawn;
@@ -49,31 +50,31 @@ public class PlayerObject : NetworkBehaviour {
             case 1:
                 if (blue)
                 {
-                    ant = Instantiate(antPrefab, BlueLeftSpawn.position, BlueLeftSpawn.rotation);
+                    ant = Instantiate(BlueAntPrefab, BlueLeftSpawn.position, BlueLeftSpawn.rotation);
                 }
                 else
                 {
-                    ant = Instantiate(antPrefab, RedLeftSpawn.position, RedLeftSpawn.rotation);
+                    ant = Instantiate(RedAntPrefab, RedLeftSpawn.position, RedLeftSpawn.rotation);
                 }
                 break;
             case 2:
                 if (blue)
                 {
-                    ant = Instantiate(antPrefab, BlueMiddleSpawn.position, BlueMiddleSpawn.rotation);
+                    ant = Instantiate(BlueAntPrefab, BlueMiddleSpawn.position, BlueMiddleSpawn.rotation);
                 }
                 else
                 {
-                    ant = Instantiate(antPrefab, RedMiddleSpawn.position, RedMiddleSpawn.rotation);
+                    ant = Instantiate(RedAntPrefab, RedMiddleSpawn.position, RedMiddleSpawn.rotation);
                 }
                 break;
             case 3:
                 if (blue)
                 {
-                    ant = Instantiate(antPrefab, BlueRightSpawn.position, BlueRightSpawn.rotation);
+                    ant = Instantiate(BlueAntPrefab, BlueRightSpawn.position, BlueRightSpawn.rotation);
                 }
                 else
                 {
-                    ant = Instantiate(antPrefab, RedRightSpawn.position, RedRightSpawn.rotation);
+                    ant = Instantiate(RedAntPrefab, RedRightSpawn.position, RedRightSpawn.rotation);
                 }
                 break;
             default:
