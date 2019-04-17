@@ -6,12 +6,18 @@ using UnityEngine.Networking;
 public class PlayerObject : NetworkBehaviour {
 
 	public GameObject antPrefab;
-    public Transform leftSpawn;
-    public Transform middleSpawn;
-    public Transform rightSpawn;
 
-	
-	void Update () {
+    public Transform BlueLeftSpawn;
+    public Transform BlueMiddleSpawn;
+    public Transform BlueRightSpawn;
+
+    private bool blue = false;
+
+    public Transform RedLeftSpawn;
+    public Transform RedMiddleSpawn;
+    public Transform RedRightSpawn;
+
+    void Update () {
 
 		if (isLocalPlayer == false) {
 			return;
@@ -34,36 +40,47 @@ public class PlayerObject : NetworkBehaviour {
     }
 
 	[Command]
-	void CmdSpawnMyAnt(int key)
+	public void CmdSpawnMyAnt(int key)
 	{
 		GameObject ant;
 
         switch(key)
         {
             case 1:
-                ant = Instantiate(antPrefab, leftSpawn.position, leftSpawn.rotation);
+                if (blue)
+                {
+                    ant = Instantiate(antPrefab, BlueLeftSpawn.position, BlueLeftSpawn.rotation);
+                }
+                else
+                {
+                    ant = Instantiate(antPrefab, RedLeftSpawn.position, RedLeftSpawn.rotation);
+                }
                 break;
             case 2:
-                ant = Instantiate(antPrefab, middleSpawn.position, middleSpawn.rotation);
+                if (blue)
+                {
+                    ant = Instantiate(antPrefab, BlueMiddleSpawn.position, BlueMiddleSpawn.rotation);
+                }
+                else
+                {
+                    ant = Instantiate(antPrefab, RedMiddleSpawn.position, RedMiddleSpawn.rotation);
+                }
                 break;
             case 3:
-                ant = Instantiate(antPrefab, rightSpawn.position, rightSpawn.rotation);
+                if (blue)
+                {
+                    ant = Instantiate(antPrefab, BlueRightSpawn.position, BlueRightSpawn.rotation);
+                }
+                else
+                {
+                    ant = Instantiate(antPrefab, RedRightSpawn.position, RedRightSpawn.rotation);
+                }
                 break;
             default:
-                ant = Instantiate(antPrefab);
-                break;
+                return;
         }
 
 		NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
 	}
-
-    [Command]
-    public void CmdSpawnAnt(Vector3 position, Quaternion rotation)
-    {
-        GameObject ant = Instantiate(antPrefab, position, rotation);
-
-        NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
-    }
-
 
 }

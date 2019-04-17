@@ -6,13 +6,6 @@ using UnityEngine.UI;
 public class HeadUpDisplay : MonoBehaviour
 {
     [SerializeField]
-    private Transform leftSpawn;
-    [SerializeField]
-    private Transform middleSpawn;
-    [SerializeField]
-    private Transform rightSpawn;
-
-    [SerializeField]
     private Button spawnButton1;
     [SerializeField]
     private Button spawnButton2;
@@ -34,17 +27,17 @@ public class HeadUpDisplay : MonoBehaviour
 
     private void SpawnAntOnPosition1 ()
     {
-        FindObjectOfType<PlayerObject>().CmdSpawnAnt(leftSpawn.position, leftSpawn.rotation);
+        FindObjectOfType<PlayerObject>().CmdSpawnMyAnt(1);
     }
 
     private void SpawnAntOnPosition2()
     {
-        FindObjectOfType<PlayerObject>().CmdSpawnAnt(middleSpawn.position, middleSpawn.rotation);
+        FindObjectOfType<PlayerObject>().CmdSpawnMyAnt(2);
     }
 
     private void SpawnAntOnPosition3()
     {
-        FindObjectOfType<PlayerObject>().CmdSpawnAnt(rightSpawn.position, rightSpawn.rotation);
+        FindObjectOfType<PlayerObject>().CmdSpawnMyAnt(3);
     }
 
     private void ToggleMenu()
