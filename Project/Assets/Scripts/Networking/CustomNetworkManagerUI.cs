@@ -18,18 +18,29 @@ public class CustomNetworkManagerUI : MonoBehaviour
     [SerializeField]
     public int offsetY = 0;
 
+    // Menu stuff
     [SerializeField]
     private Button hostButton;
     [SerializeField]
     private Button exitButton;
     [SerializeField]
     private Image gameBrowser;
+    [SerializeField]
+    private GameObject menu;
+
+    [SerializeField]
+    private HeadUpDisplay hud;
+
+    private bool menuIsVisible;
 
     private void Awake()
     {
+        menuIsVisible = true;
         hostButton.onClick.AddListener(HostGame);
         exitButton.onClick.AddListener(ExitGame);
         exitButton.gameObject.SetActive(false);
+        hud.gameObject.SetActive(false);
+        menu.gameObject.SetActive(menuIsVisible);
     }
 
     public void HostGame ()
@@ -41,6 +52,9 @@ public class CustomNetworkManagerUI : MonoBehaviour
         hostButton.gameObject.SetActive(false);
         gameBrowser.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
+        hud.gameObject.SetActive(true);
+
+        ToggleMenu();
     }
 
     public void ExitGame()
@@ -52,6 +66,7 @@ public class CustomNetworkManagerUI : MonoBehaviour
         hostButton.gameObject.SetActive(true);
         gameBrowser.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(false);
+        hud.gameObject.SetActive(false);
     }
 
     public void JoinGame(LanBroadcastInfo gameInfo)
@@ -64,8 +79,19 @@ public class CustomNetworkManagerUI : MonoBehaviour
         hostButton.gameObject.SetActive(false);
         gameBrowser.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
+        hud.gameObject.SetActive(true);
+
+        ToggleMenu();
 
         discovery.StopBroadcast();
+    }
+
+    public void ToggleMenu()
+    {
+        Debug.Log("TEST");
+        menuIsVisible = menuIsVisible ? false : true;
+
+        menu.gameObject.SetActive(menuIsVisible);
     }
 
     void OnGUI()
