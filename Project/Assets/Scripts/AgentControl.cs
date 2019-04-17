@@ -7,16 +7,26 @@ using UnityEngine.Networking;
 public class AgentControl : NetworkBehaviour {
 
 
-	public Transform home;
 	NavMeshAgent agent;
+    private Transform home;
 
 	// Use this for initialization
 	void Start () {
 		agent = this.GetComponent<NavMeshAgent> ();
 
-	}
+        string homeTag = "";
+
+        if (this.tag == "BlueAnt")
+            homeTag = "BlueHome";
+        else if (this.tag == "RedAnt")
+            homeTag = "RedHome";
+
+        home = GameObject.FindWithTag(homeTag).transform;
+    }
 
 	void Update (){
+
+        
 		agent.SetDestination(home.position);
 
 		if (hasAuthority == false) {

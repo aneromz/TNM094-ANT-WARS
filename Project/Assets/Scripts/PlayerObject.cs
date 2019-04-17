@@ -12,7 +12,7 @@ public class PlayerObject : NetworkBehaviour {
     public Transform BlueMiddleSpawn;
     public Transform BlueRightSpawn;
 
-    private bool blue = true;
+    private bool blue = false;
 
     public Transform RedLeftSpawn;
     public Transform RedMiddleSpawn;
@@ -81,7 +81,10 @@ public class PlayerObject : NetworkBehaviour {
                 return;
         }
 
-		NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
+        Transform antParent = GameObject.FindWithTag("AntParent").transform;
+        ant.transform.SetParent(antParent);
+
+        NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
 	}
 
 }
