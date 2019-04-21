@@ -88,9 +88,7 @@ public class CustomNetworkManagerUI : MonoBehaviour
 
     public void ToggleMenu()
     {
-        Debug.Log("TEST");
         menuIsVisible = menuIsVisible ? false : true;
-
         menu.gameObject.SetActive(menuIsVisible);
     }
 

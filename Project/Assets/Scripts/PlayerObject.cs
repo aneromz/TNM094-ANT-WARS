@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerObject : NetworkBehaviour {
@@ -12,7 +10,7 @@ public class PlayerObject : NetworkBehaviour {
     public Transform BlueMiddleSpawn;
     public Transform BlueRightSpawn;
 
-    private bool blue = false;
+    private bool blue = true;
 
     public Transform RedLeftSpawn;
     public Transform RedMiddleSpawn;
@@ -81,10 +79,6 @@ public class PlayerObject : NetworkBehaviour {
                 return;
         }
 
-        Transform antParent = GameObject.FindWithTag("AntParent").transform;
-        ant.transform.SetParent(antParent);
-
         NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
 	}
-
 }
