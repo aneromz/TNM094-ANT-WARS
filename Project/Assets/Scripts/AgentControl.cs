@@ -29,13 +29,10 @@ public class AgentControl : NetworkBehaviour
         // Correctly position the ant on the map
         positionOffset = GameObject.Find("SceneAnchor").transform.localPosition;
 
-        string homeTag = "";
         if (tag == "BlueAnt")
-            homeTag = "BlueHome";
-        else if (tag == "RedAnt")
-            homeTag = "RedHome";
-
-        home = GameObject.FindWithTag(homeTag).transform;
+            home = GameObject.FindWithTag("BlueHome").transform;
+        else
+            home = GameObject.FindWithTag("RedHome").transform;
     }
 
 	void Update ()
