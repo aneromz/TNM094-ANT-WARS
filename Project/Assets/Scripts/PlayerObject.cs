@@ -12,7 +12,7 @@ public class PlayerObject : NetworkBehaviour {
     public Transform BlueMiddleSpawn;
     public Transform BlueRightSpawn;
 
-    private bool blue = false;
+    private bool blue = true;
 
     public Transform RedLeftSpawn;
     public Transform RedMiddleSpawn;
