@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CustomNetworkManagerUI : MonoBehaviour
 {
@@ -32,14 +31,26 @@ public class CustomNetworkManagerUI : MonoBehaviour
     private HeadUpDisplay hud;
 
     private bool menuIsVisible;
+    public static CustomNetworkManagerUI instance = null;
 
     private void Awake()
     {
-        menuIsVisible = true;
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(this);
+
+        // Add onclick functions to buttons
         hostButton.onClick.AddListener(HostGame);
         exitButton.onClick.AddListener(ExitGame);
+
+        // Hide information thats not suppose to be visible
         exitButton.gameObject.SetActive(false);
         hud.gameObject.SetActive(false);
+        menuIsVisible = true;
         menu.gameObject.SetActive(menuIsVisible);
     }
 
@@ -55,27 +66,33 @@ public class CustomNetworkManagerUI : MonoBehaviour
         hud.gameObject.SetActive(true);
 
         ToggleMenu();
+        SceneManager.LoadScene("Game");
     }
 
     public void ExitGame()
     {
-        manager.StopHost();
-        discovery.SearchForBroadcast();
-
-        // Manage buttons
+        // Manage buttons visibility
         hostButton.gameObject.SetActive(true);
         gameBrowser.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(false);
         hud.gameObject.SetActive(false);
+
+        // Load start menu scene
+        SceneManager.LoadScene("StartMenu");
+
+        manager.StopHost();
+        discovery.StopBroadcast();
+        discovery.Reset();
     }
 
     public void JoinGame(LanBroadcastInfo gameInfo)
     {
+        // Configure network settings
         manager.networkAddress = gameInfo.ipAddress;
         manager.networkPort = gameInfo.port;
         manager.StartClient();
 
-        // Manage buttons
+        // Manage buttons visibility
         hostButton.gameObject.SetActive(false);
         gameBrowser.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
@@ -83,14 +100,15 @@ public class CustomNetworkManagerUI : MonoBehaviour
 
         ToggleMenu();
 
-        discovery.StopBroadcast();
+        discovery.StopBroadcast(); // Stop listen for broadcasts
+        discovery.CleanUpCoroutines();
+
+        SceneManager.LoadScene("Game");
     }
 
     public void ToggleMenu()
     {
-        Debug.Log("TEST");
         menuIsVisible = menuIsVisible ? false : true;
-
         menu.gameObject.SetActive(menuIsVisible);
     }
 

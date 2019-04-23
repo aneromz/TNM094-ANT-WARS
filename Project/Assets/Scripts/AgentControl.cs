@@ -1,51 +1,53 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Networking;
 
-public class AgentControl : NetworkBehaviour {
-
-
-	NavMeshAgent agent;
+public class AgentControl : NetworkBehaviour
+{ 
+    private NavMeshAgent agent;
     private Transform home;
 
-	// Use this for initialization
-	void Start () {
-		agent = this.GetComponent<NavMeshAgent> ();
+    private Transform sceneTransform;
+    private Quaternion rotationOffset;
+    private Vector3 positionOffset;
 
-        string homeTag = "";
+    private AntBody antBody;
 
-        if (this.tag == "BlueAnt")
-            homeTag = "BlueHome";
-        else if (this.tag == "RedAnt")
-            homeTag = "RedHome";
+    // Use this for initialization
+    void Start ()
+    {
+        // The ants navigation system used to calculate a path from the navmesh
+		agent = GetComponent<NavMeshAgent> ();
+        // Object that contains the 3D model and the collider of the ant body
+        antBody = GetComponentInChildren<AntBody>();
 
-        home = GameObject.FindWithTag(homeTag).transform;
+        // The scenes transform used to simulate a parent transform
+        sceneTransform = GameObject.Find("ImageTarget").transform;
+
+        // Rotate the ant body to correct position
+        rotationOffset = Quaternion.Euler(Mathf.PI / 2, 0, 0);
+        // Correctly position the ant on the map
+        positionOffset = GameObject.Find("SceneAnchor").transform.localPosition;
+
+        if (tag == "BlueAnt")
+            home = GameObject.FindWithTag("BlueHome").transform;
+        else
+            home = GameObject.FindWithTag("RedHome").transform;
     }
 
-	void Update (){
-
-        
+	void Update ()
+    {
+        // Calculate path
 		agent.SetDestination(home.position);
 
-		if (hasAuthority == false) {
-			return;
-		}
+        // Set the position and rotation of the visible ant body
+        antBody.transform.position = sceneTransform.TransformPoint(transform.position + positionOffset);
+        antBody.transform.rotation = sceneTransform.rotation * transform.rotation * rotationOffset;
+    }
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			CmdDestroyAnt ();
-		}
-
+    [Command]
+	public void CmdDestroyAnt()
+    {
+        Destroy (gameObject);
 	}
-		
-	void OnMouseDown(){
-			CmdDestroyAnt ();
-	}
-
-	[Command]
-	void CmdDestroyAnt(){
-			Destroy (gameObject);
-	}
-
 }
