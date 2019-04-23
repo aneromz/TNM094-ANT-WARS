@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Networking;
-using System;
 
 public class GameList : MonoBehaviour
 {
@@ -19,6 +17,9 @@ public class GameList : MonoBehaviour
     // Update game list
     private void AvailableGamesList_OnAvailableGamesListChanged(List<LanBroadcastInfo> games)
     {
+        if (this == null)
+            return;
+
         ClearButtons();
         CreateNewButtons(games);
     }

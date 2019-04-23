@@ -10,32 +10,50 @@ public class CustomNetworkDiscovery : NetworkDiscovery
     private float broadcastTimer;
     private Dictionary<LanBroadcastInfo, float> lanAddresses;
 
+    public static CustomNetworkDiscovery instance = null;
+
     private void Awake()
     {
-        lanAddresses = new Dictionary<LanBroadcastInfo, float>();
-        broadcastTimer = 5f;
-        SearchForBroadcast();
-        StartCoroutine(CleanUpExpiredBroadcasts());
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(this);
+
+        broadcastTimer = 1f;
+
+        Reset();
     }
 
     public void StartBroadcast()
     {
         StopBroadcast(); // Clean up
-        base.Initialize();
-        base.StartAsServer(); // Send broadcast
+        CleanUpCoroutines();
+
+        Initialize();
+        StartAsServer(); // Send broadcast
     }
 
     public void SearchForBroadcast()
     {
-        if (base.running)
-        {
-            StopBroadcast();
-        }
-            
-
-        base.Initialize();
-        base.StartAsClient(); // Listen for broadcasts
+        Initialize();
+        StartAsClient(); // Listen for broadcasts
     }
+
+    public void Reset()
+    {
+        lanAddresses = new Dictionary<LanBroadcastInfo, float>();
+
+        SearchForBroadcast();
+        StartCoroutine(CleanUpExpiredBroadcasts());
+    }
+
 
     private IEnumerator CleanUpExpiredBroadcasts()
     {
@@ -61,6 +79,11 @@ public class CustomNetworkDiscovery : NetworkDiscovery
         }
     }
 
+    public void CleanUpCoroutines()
+    {
+        StopCoroutine(CleanUpExpiredBroadcasts());
+    }
+
     public override void OnReceivedBroadcast(string fromAddress, string data)
     {
         base.OnReceivedBroadcast(fromAddress, data);
@@ -78,7 +101,7 @@ public class CustomNetworkDiscovery : NetworkDiscovery
             lanAddresses[broadcastInfo] = Time.time + broadcastTimer;
         }
 
-        Debug.Log("Broadcasting");
+        Debug.Log("Broadcast recieved");
     }
 
     private void UpdateGameList()
