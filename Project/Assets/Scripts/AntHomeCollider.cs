@@ -7,6 +7,8 @@ public class AntHomeCollider : MonoBehaviour
 
     public Image healthBar;
 
+    private float timer = 0;
+
     void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "RedAnt" && tag == "RedHome")
@@ -17,6 +19,11 @@ public class AntHomeCollider : MonoBehaviour
         {
             TakeDamage();
         }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        healthBar.color = Color.green;
     }
 
     public void TakeDamage()
@@ -32,16 +39,18 @@ public class AntHomeCollider : MonoBehaviour
         Debug.Log(tag + " Health: " + health);
         healthBar.fillAmount = health / 100f;
 
-        if(health < 80f)
-        {
-            if( (health % 3) == 0)
-            healthBar.color = Color.white;
-            else
+        timer += Time.deltaTime;
+            if (timer > 0.2f)
             {
-              healthBar.color = Color.green;
+                if (healthBar.color == Color.white)
+                {
+                    healthBar.color = Color.green;
+                }
+                else healthBar.color = Color.white;
+                timer = 0;
             }
-        }
-        
 
-    }
+        }
+
+
 }
