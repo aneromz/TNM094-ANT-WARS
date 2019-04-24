@@ -66,7 +66,7 @@ public class CustomNetworkManagerUI : MonoBehaviour
         hud.gameObject.SetActive(true);
 
         ToggleMenu();
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(1);
     }
 
     public void ExitGame()
@@ -103,7 +103,7 @@ public class CustomNetworkManagerUI : MonoBehaviour
         discovery.StopBroadcast(); // Stop listen for broadcasts
         discovery.CleanUpCoroutines();
 
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(1);
     }
 
     public void ToggleMenu()
