@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class HomeScript : MonoBehaviour
 {
-    private float health = 100f;
+
+    private float startHealth = 100f;
+    private float health; 
 
 
     public Image healthBar;
@@ -13,7 +15,9 @@ public class HomeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        health = startHealth;
+
     }
 
     // Update is called once per frame
@@ -27,7 +31,7 @@ public class HomeScript : MonoBehaviour
 
         if(Collision.gameObject.tag == "BlueAnt")
         {
-            if (health <= 0)
+            if (startHealth <= 0)
             {
                 Debug.Log("you lost!");
                 gameObject.SetActive(false);
@@ -42,10 +46,10 @@ public class HomeScript : MonoBehaviour
 
     void TakeDamage()
     {
-        health -= 0.1f;
-        Debug.Log(health);
+        startHealth -= 0.1f;
+        Debug.Log(startHealth);
 
-      //  healthBar.fillAmount 
+        healthBar.fillAmount = health / startHealth;
 
     }
 
