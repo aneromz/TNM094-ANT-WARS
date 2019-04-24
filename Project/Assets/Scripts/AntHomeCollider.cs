@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class AntHomeCollider : MonoBehaviour
 {
     private float health = 100f;
+
+    public Image healthBar;
 
     void OnCollisionStay(Collision collision)
     {
@@ -18,6 +21,7 @@ public class AntHomeCollider : MonoBehaviour
 
     public void TakeDamage()
     {
+
         if (health < 0.1f)
         {
             Debug.Log(tag + " is dead!");
@@ -26,5 +30,18 @@ public class AntHomeCollider : MonoBehaviour
         }
         health -= 0.1f;
         Debug.Log(tag + " Health: " + health);
+        healthBar.fillAmount = health / 100f;
+
+        if(health < 80f)
+        {
+            if( (health % 3) == 0)
+            healthBar.color = Color.white;
+            else
+            {
+              healthBar.color = Color.green;
+            }
+        }
+        
+
     }
 }

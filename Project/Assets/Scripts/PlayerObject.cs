@@ -25,20 +25,6 @@ public class PlayerObject : NetworkBehaviour {
 			return;
 		}
         
-		if (Input.GetKeyDown(KeyCode.Q))
-        {
-			CmdSpawnMyAnt(1);
-		}
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            CmdSpawnMyAnt(2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            CmdSpawnMyAnt(3);
-        }
         */
     }
 
