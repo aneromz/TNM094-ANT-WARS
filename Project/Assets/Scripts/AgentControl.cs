@@ -22,7 +22,7 @@ public class AgentControl : NetworkBehaviour
         antBody = GetComponentInChildren<AntBody>();
 
         // The scenes transform used to simulate a parent transform
-        sceneTransform = GameObject.Find("ImageTarget").transform;
+        sceneTransform = GameObject.Find("Map Content").transform;
 
         // Rotate the ant body to correct position
         rotationOffset = Quaternion.Euler(Mathf.PI / 2, 0, 0);

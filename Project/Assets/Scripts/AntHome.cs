@@ -12,7 +12,7 @@ public class AntHome : MonoBehaviour
     {
         model = GetComponentInChildren<Rigidbody>();
         // The scenes transform used to simulate a parent transform
-        sceneTransform = GameObject.Find("ImageTarget").transform;
+        sceneTransform = GameObject.Find("Map Content").transform;
 
         // Correctly position the home on the map
         if (tag == "BlueHome")
