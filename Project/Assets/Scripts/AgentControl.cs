@@ -9,7 +9,6 @@ public class AgentControl : NetworkBehaviour
 
     private Transform sceneTransform;
     private Quaternion rotationOffset;
-    private Vector3 positionOffset;
 
     private AntBody antBody;
 
@@ -26,8 +25,6 @@ public class AgentControl : NetworkBehaviour
 
         // Rotate the ant body to correct position
         rotationOffset = Quaternion.Euler(Mathf.PI / 2, 0, 0);
-        // Correctly position the ant on the map
-        positionOffset = GameObject.Find("SceneAnchor").transform.localPosition;
 
         if (tag == "BlueAnt")
             home = GameObject.FindWithTag("BlueHome").transform;
@@ -41,7 +38,7 @@ public class AgentControl : NetworkBehaviour
 		agent.SetDestination(home.position);
 
         // Set the position and rotation of the visible ant body
-        antBody.transform.position = sceneTransform.TransformPoint(transform.position + positionOffset);
+        antBody.transform.position = sceneTransform.TransformPoint(transform.position);
         antBody.transform.rotation = sceneTransform.rotation * transform.rotation * rotationOffset;
     }
 
