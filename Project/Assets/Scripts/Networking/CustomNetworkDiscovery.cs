@@ -9,6 +9,7 @@ public class CustomNetworkDiscovery : NetworkDiscovery
 {
     private float broadcastTimer;
     private Dictionary<LanBroadcastInfo, float> lanAddresses;
+    private bool shouldJoinGame;
 
     public static CustomNetworkDiscovery instance = null;
 
@@ -26,7 +27,7 @@ public class CustomNetworkDiscovery : NetworkDiscovery
 
         DontDestroyOnLoad(this);
 
-        broadcastTimer = 1f;
+        broadcastTimer = 5f;
 
         Reset();
     }
@@ -49,6 +50,7 @@ public class CustomNetworkDiscovery : NetworkDiscovery
     public void Reset()
     {
         lanAddresses = new Dictionary<LanBroadcastInfo, float>();
+        shouldJoinGame = false;
 
         SearchForBroadcast();
         StartCoroutine(CleanUpExpiredBroadcasts());
@@ -88,8 +90,16 @@ public class CustomNetworkDiscovery : NetworkDiscovery
     {
         base.OnReceivedBroadcast(fromAddress, data);
 
+        if (shouldJoinGame == false)
+            return;
+
         LanBroadcastInfo broadcastInfo = new LanBroadcastInfo(fromAddress, data);
 
+        var manager = FindObjectOfType<CustomNetworkManagerUI>();
+        manager.ToggleGameSearch(); // Stop search for game
+        manager.JoinGame(broadcastInfo); // Join game
+
+        /*
         // Check if the broadcasted address isn't already in the dictionary
         if (lanAddresses.ContainsKey(broadcastInfo) == false)
         {
@@ -100,8 +110,14 @@ public class CustomNetworkDiscovery : NetworkDiscovery
         {
             lanAddresses[broadcastInfo] = Time.time + broadcastTimer;
         }
-
+        
         Debug.Log("Broadcast recieved");
+        */
+    }
+
+    public void JoinGameOnRecievedBroadcast(bool flag)
+    {
+        shouldJoinGame = flag;
     }
 
     private void UpdateGameList()

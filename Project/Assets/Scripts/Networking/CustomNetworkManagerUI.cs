@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,8 @@ public class CustomNetworkManagerUI : MonoBehaviour
     [SerializeField]
     private Button exitButton;
     [SerializeField]
+    private Button findButton;
+    [SerializeField]
     private Image gameBrowser;
     [SerializeField]
     private GameObject menu;
@@ -31,6 +34,8 @@ public class CustomNetworkManagerUI : MonoBehaviour
     private HeadUpDisplay hud;
 
     private bool menuIsVisible;
+    private bool isSearchingForGame;
+
     public static CustomNetworkManagerUI instance = null;
 
     private void Awake()
@@ -46,10 +51,12 @@ public class CustomNetworkManagerUI : MonoBehaviour
         // Add onclick functions to buttons
         hostButton.onClick.AddListener(HostGame);
         exitButton.onClick.AddListener(ExitGame);
+        findButton.onClick.AddListener(ToggleGameSearch);
 
         // Hide information thats not suppose to be visible
         exitButton.gameObject.SetActive(false);
         hud.gameObject.SetActive(false);
+        isSearchingForGame = false;
         menuIsVisible = true;
         menu.gameObject.SetActive(menuIsVisible);
     }
@@ -60,8 +67,9 @@ public class CustomNetworkManagerUI : MonoBehaviour
         discovery.StartBroadcast();
 
         // Manage buttons
+        //gameBrowser.gameObject.SetActive(false);
         hostButton.gameObject.SetActive(false);
-        gameBrowser.gameObject.SetActive(false);
+        findButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
         hud.gameObject.SetActive(true);
 
@@ -72,8 +80,9 @@ public class CustomNetworkManagerUI : MonoBehaviour
     public void ExitGame()
     {
         // Manage buttons visibility
+        //gameBrowser.gameObject.SetActive(false);
         hostButton.gameObject.SetActive(true);
-        gameBrowser.gameObject.SetActive(true);
+        findButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(false);
         hud.gameObject.SetActive(false);
 
@@ -93,8 +102,9 @@ public class CustomNetworkManagerUI : MonoBehaviour
         manager.StartClient();
 
         // Manage buttons visibility
+        //gameBrowser.gameObject.SetActive(false);
         hostButton.gameObject.SetActive(false);
-        gameBrowser.gameObject.SetActive(false);
+        findButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
         hud.gameObject.SetActive(true);
 
@@ -104,6 +114,23 @@ public class CustomNetworkManagerUI : MonoBehaviour
         discovery.CleanUpCoroutines();
 
         SceneManager.LoadScene(1);
+    }
+
+    public void ToggleGameSearch()
+    {
+        // Switch
+        isSearchingForGame = !isSearchingForGame;
+
+        if (isSearchingForGame)
+        {
+            discovery.JoinGameOnRecievedBroadcast(true);
+            findButton.GetComponentInChildren<Text>().text = "STOP SEARCHING";
+        }
+        else
+        {
+            discovery.JoinGameOnRecievedBroadcast(false);
+            findButton.GetComponentInChildren<Text>().text = "JOIN ROOM";
+        }
     }
 
     public void ToggleMenu()
@@ -124,20 +151,6 @@ public class CustomNetworkManagerUI : MonoBehaviour
         if (NetworkClient.active)
         {
             GUI.Label(new Rect(xpos, ypos, 300, 20), "Address: " + manager.networkAddress + " port: " + manager.networkPort);
-            ypos += spacing;
-        }
-
-        if (NetworkClient.active && !ClientScene.ready)
-        {
-            if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Client Ready"))
-            {
-                ClientScene.Ready(manager.client.connection);
-
-                if (ClientScene.localPlayers.Count == 0)
-                {
-                    ClientScene.AddPlayer(0);
-                }
-            }
             ypos += spacing;
         }
     }
