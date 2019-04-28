@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerIdentity : NetworkBehaviour
 {
     [SyncVar] public string uniqueIdentity;
+    [SyncVar] public string playerName;
     private NetworkInstanceId netIdentity;
 
     public override void OnStartLocalPlayer()
     {
+        SetPlayerName();
         GetNetIdentity();
         SetIdentity();
 
@@ -30,7 +30,7 @@ public class PlayerIdentity : NetworkBehaviour
         var players = FindObjectsOfType<PlayerIdentity>();
         foreach (var player in players)
         {
-            if (player.transform.name == "PlayerObject(Clone)")
+            if (player.transform.name == "PlayerObject(Clone)" || player.transform.name == "")
             {
                 player.SetIdentity();
             }
@@ -41,10 +41,11 @@ public class PlayerIdentity : NetworkBehaviour
     void GetNetIdentity()
     {
         netIdentity = GetComponent<NetworkIdentity>().netId;
-        CmdGiveServerUniqueIdentity("Player " + netIdentity.ToString());
+        PlayerPrefs.SetString("uniqueIdentity", CreateUniqueIdentity());
+        CmdGiveServerUniqueIdentity(CreateUniqueIdentity());
     }
 
-    void SetIdentity()
+    public void SetIdentity()
     {
         if (!isLocalPlayer)
         {
@@ -54,6 +55,12 @@ public class PlayerIdentity : NetworkBehaviour
         {
             transform.name = CreateUniqueIdentity();
         }
+    }
+
+    [Client]
+    public void SetPlayerName()
+    {
+        CmdGiveServerPlayerName(PlayerPrefs.GetString("playerName"));
     }
 
     private string CreateUniqueIdentity()
@@ -67,4 +74,9 @@ public class PlayerIdentity : NetworkBehaviour
         uniqueIdentity = identity;
     }
 
+    [Command]
+    void CmdGiveServerPlayerName(string name)
+    {
+        playerName = name;
+    }
 }

@@ -16,23 +16,9 @@ public class HeadUpDisplay : MonoBehaviour
 
     private bool menuIsVisible;
 
-    public static HeadUpDisplay instance = null;
-
     private Toggle teamToggle;
 
     private bool blue = true;
-
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-
-        else if (instance != this)
-            Destroy(gameObject);
-
-
-        DontDestroyOnLoad(this);
-    }
 
     public void Start ()
     {

@@ -4,34 +4,38 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class CustomNetworkManagerUI : MonoBehaviour
+public class CustomNetworkManagerUI : NetworkBehaviour
 {
     [SerializeField]
-    private NetworkManager manager;
+    private CustomNetworkManager manager;
     [SerializeField]
     private CustomNetworkDiscovery discovery;
 
+    // Menu buttons
     [SerializeField]
-    public bool showGUI = true;
+    private Button hostLobbyButton;
     [SerializeField]
-    public int offsetX = 0;
+    private Button exitGameButton;
     [SerializeField]
-    public int offsetY = 0;
-
-    // Menu stuff
+    private Button exitLobbyButton;
     [SerializeField]
-    private Button hostButton;
+    private Button findLobbyButton;
     [SerializeField]
-    private Button exitButton;
+    private Button startGameButton;
     [SerializeField]
-    private Button findButton;
+    private Button stopSearchButton;
+    
+    // Menu panels
     [SerializeField]
-    private Image gameBrowser;
+    private GameObject optionsPanel;
     [SerializeField]
-    private GameObject menu;
-
+    private GameObject nameSelectionPanel;
     [SerializeField]
-    private HeadUpDisplay hud;
+    public GameObject lobbyPanel;
+    [SerializeField]
+    private GameObject inGameMenuPanel;
+    [SerializeField]
+    private GameObject menuBackground;
 
     private bool menuIsVisible;
     private bool isSearchingForGame;
@@ -49,16 +53,37 @@ public class CustomNetworkManagerUI : MonoBehaviour
         DontDestroyOnLoad(this);
 
         // Add onclick functions to buttons
-        hostButton.onClick.AddListener(HostGame);
-        exitButton.onClick.AddListener(ExitGame);
-        findButton.onClick.AddListener(ToggleGameSearch);
+        hostLobbyButton.onClick.AddListener(HostGame);
+        exitGameButton.onClick.AddListener(ExitGame);
+        findLobbyButton.onClick.AddListener(ToggleGameSearch);
+        exitLobbyButton.onClick.AddListener(ExitLobby);
+        startGameButton.onClick.AddListener(CmdStartGame);
+        stopSearchButton.onClick.AddListener(ToggleGameSearch);
 
-        // Hide information thats not suppose to be visible
-        exitButton.gameObject.SetActive(false);
-        hud.gameObject.SetActive(false);
+        // Deactivate in game menu
+        menuIsVisible = false;
+        inGameMenuPanel.SetActive(menuIsVisible);
+
+        // Arrange panel visibility
+        nameSelectionPanel.SetActive(true);
+        nameSelectionPanel.GetComponentInChildren<Button>().onClick.AddListener(SelectName);
+        optionsPanel.SetActive(false);
+        lobbyPanel.SetActive(false);
+        stopSearchButton.gameObject.SetActive(false);
+
         isSearchingForGame = false;
-        menuIsVisible = true;
-        menu.gameObject.SetActive(menuIsVisible);
+    }
+    
+    [Command]
+    private void CmdStartGame()
+    {
+        FindObjectOfType<PlayerObject>().RpcLoadGameScene();
+    }
+
+    public void SelectName()
+    {
+        nameSelectionPanel.SetActive(false);
+        optionsPanel.SetActive(true);
     }
 
     public void HostGame ()
@@ -66,25 +91,30 @@ public class CustomNetworkManagerUI : MonoBehaviour
         manager.StartHost();
         discovery.StartBroadcast();
 
-        // Manage buttons
-        //gameBrowser.gameObject.SetActive(false);
-        hostButton.gameObject.SetActive(false);
-        findButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(true);
-        hud.gameObject.SetActive(true);
+        optionsPanel.SetActive(false);
+        lobbyPanel.SetActive(true);
+        startGameButton.gameObject.SetActive(true);
+    }
 
-        ToggleMenu();
-        SceneManager.LoadScene(1);
+    public void ExitLobby()
+    {
+        lobbyPanel.SetActive(false);
+        optionsPanel.SetActive(true);
+
+        manager.StopHost();
+        discovery.StopBroadcast();
+        discovery.Reset();
     }
 
     public void ExitGame()
     {
-        // Manage buttons visibility
-        //gameBrowser.gameObject.SetActive(false);
-        hostButton.gameObject.SetActive(true);
-        findButton.gameObject.SetActive(true);
-        exitButton.gameObject.SetActive(false);
-        hud.gameObject.SetActive(false);
+        menuBackground.SetActive(true);
+
+        // Deactivate in game menu
+        ToggleMenu();
+
+        // Activate options panel
+        optionsPanel.SetActive(true);
 
         // Load start menu scene
         SceneManager.LoadScene("StartMenu");
@@ -94,26 +124,24 @@ public class CustomNetworkManagerUI : MonoBehaviour
         discovery.Reset();
     }
 
-    public void JoinGame(LanBroadcastInfo gameInfo)
+    public void JoinLobby(LanBroadcastInfo gameInfo)
     {
         // Configure network settings
         manager.networkAddress = gameInfo.ipAddress;
         manager.networkPort = gameInfo.port;
         manager.StartClient();
 
-        // Manage buttons visibility
-        //gameBrowser.gameObject.SetActive(false);
-        hostButton.gameObject.SetActive(false);
-        findButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(true);
-        hud.gameObject.SetActive(true);
+        // Rearrange menu visibility
+        optionsPanel.SetActive(false);
+        lobbyPanel.SetActive(true);
+        stopSearchButton.gameObject.SetActive(false);
+        findLobbyButton.gameObject.SetActive(true);
+        hostLobbyButton.gameObject.SetActive(true);
+        startGameButton.gameObject.SetActive(false);
 
-        ToggleMenu();
-
-        discovery.StopBroadcast(); // Stop listen for broadcasts
+        // Stop listen for broadcasts
+        discovery.StopBroadcast(); 
         discovery.CleanUpCoroutines();
-
-        SceneManager.LoadScene(1);
     }
 
     public void ToggleGameSearch()
@@ -124,34 +152,24 @@ public class CustomNetworkManagerUI : MonoBehaviour
         if (isSearchingForGame)
         {
             discovery.JoinGameOnRecievedBroadcast(true);
-            findButton.GetComponentInChildren<Text>().text = "STOP SEARCHING";
+
+            stopSearchButton.gameObject.SetActive(true);
+            findLobbyButton.gameObject.SetActive(false);
+            hostLobbyButton.gameObject.SetActive(false);
         }
         else
         {
             discovery.JoinGameOnRecievedBroadcast(false);
-            findButton.GetComponentInChildren<Text>().text = "JOIN ROOM";
+
+            stopSearchButton.gameObject.SetActive(false);
+            findLobbyButton.gameObject.SetActive(true);
+            hostLobbyButton.gameObject.SetActive(true);
         }
     }
 
     public void ToggleMenu()
     {
         menuIsVisible = menuIsVisible ? false : true;
-        menu.gameObject.SetActive(menuIsVisible);
-    }
-
-    void OnGUI()
-    {
-        if (!showGUI)
-            return;
-
-        int xpos = 10 + offsetX;
-        int ypos = 40 + offsetY;
-        int spacing = 24;
-
-        if (NetworkClient.active)
-        {
-            GUI.Label(new Rect(xpos, ypos, 300, 20), "Address: " + manager.networkAddress + " port: " + manager.networkPort);
-            ypos += spacing;
-        }
+        inGameMenuPanel.SetActive(menuIsVisible);
     }
 }

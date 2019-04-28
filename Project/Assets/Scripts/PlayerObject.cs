@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class PlayerObject : NetworkBehaviour {
 
@@ -71,4 +72,12 @@ public class PlayerObject : NetworkBehaviour {
 
         NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
 	}
+
+    [ClientRpc]
+    public void RpcLoadGameScene()
+    {
+        GameObject.Find("Lobby").SetActive(false);
+        GameObject.Find("Menu Background").SetActive(false);
+        SceneManager.LoadScene(1);
+    }
 }

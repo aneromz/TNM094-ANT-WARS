@@ -97,7 +97,7 @@ public class CustomNetworkDiscovery : NetworkDiscovery
 
         var manager = FindObjectOfType<CustomNetworkManagerUI>();
         manager.ToggleGameSearch(); // Stop search for game
-        manager.JoinGame(broadcastInfo); // Join game
+        manager.JoinLobby(broadcastInfo); // Join game
 
         /*
         // Check if the broadcasted address isn't already in the dictionary
