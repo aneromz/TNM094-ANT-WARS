@@ -25,6 +25,6 @@ public class JoinGameButton : MonoBehaviour
 
     private void JoinGame()
     {
-        FindObjectOfType<CustomNetworkManagerUI>().JoinGame(gameInfo);
+        FindObjectOfType<CustomNetworkManagerUI>().JoinLobby(gameInfo);
     }
 }

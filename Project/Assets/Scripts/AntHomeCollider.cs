@@ -7,7 +7,21 @@ public class AntHomeCollider : MonoBehaviour
 
     public Image healthBar;
 
-    private float timer = 0;
+    private const float DAMAGE_TIME_INTERVAL = 1f;
+    private const float COLOR_INTERPOLATION_TIME = 0.5f;
+
+    private float damageTimer = 0f;
+    private float interpolationTimer = COLOR_INTERPOLATION_TIME;
+
+    private bool isTakingDamage = false;
+
+    private void Update()
+    {
+        if (isTakingDamage)
+        {
+            DisplayWarningSignal();
+        }
+    }
 
     void OnCollisionStay(Collision collision)
     {
@@ -21,36 +35,41 @@ public class AntHomeCollider : MonoBehaviour
         }
     }
 
-    public void OnCollisionExit(Collision collision)
+    private void TakeDamage()
     {
-        healthBar.color = Color.green;
+        isTakingDamage = true;
+
+        damageTimer += Time.deltaTime;
+        if (damageTimer > DAMAGE_TIME_INTERVAL)
+        {
+            if (health < 0.1f)
+            {
+                Debug.Log(tag + " is dead!");
+                gameObject.SetActive(false);
+                return;
+            }
+            
+            // Reduce health
+            health -= 0.5f;
+            healthBar.fillAmount = health / 100f;
+
+            // Reset damage timer
+            damageTimer = 0f;
+        }
     }
 
-    public void TakeDamage()
+    private void DisplayWarningSignal()
     {
-
-        if (health < 0.1f)
+        if (interpolationTimer > 0f)
         {
-            Debug.Log(tag + " is dead!");
-            gameObject.SetActive(false);
-            return;
+            // Interpolate the health bar color from white to green
+            healthBar.color = Color.Lerp(Color.green, Color.white, interpolationTimer / COLOR_INTERPOLATION_TIME);
+            interpolationTimer -= Time.deltaTime;
         }
-        health -= 0.1f;
-        Debug.Log(tag + " Health: " + health);
-        healthBar.fillAmount = health / 100f;
-
-        timer += Time.deltaTime;
-            if (timer > 0.2f)
-            {
-                if (healthBar.color == Color.white)
-                {
-                    healthBar.color = Color.green;
-                }
-                else healthBar.color = Color.white;
-                timer = 0;
-            }
-
+        else
+        {
+            isTakingDamage = false;
+            interpolationTimer = COLOR_INTERPOLATION_TIME;
         }
-
-
+    }
 }
