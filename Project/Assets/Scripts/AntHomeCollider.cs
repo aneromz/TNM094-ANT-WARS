@@ -50,7 +50,7 @@ public class AntHomeCollider : MonoBehaviour
             }
             
             // Reduce health
-            health -= 0.5f;
+            health -= 2f;
             healthBar.fillAmount = health / 100f;
 
             // Reset damage timer
