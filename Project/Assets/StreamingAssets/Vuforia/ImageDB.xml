@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="ArucoNew" size="0.162100 0.229745" />
-    <ImageTarget name="ArucoTarget" size="0.297000 0.420849" />
+    <ImageTarget name="arUcoBoard" size="0.594000 0.391719" />
   </Tracking>
 </QCARConfig>
