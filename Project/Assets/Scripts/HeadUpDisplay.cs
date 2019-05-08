@@ -16,14 +16,14 @@ public class HeadUpDisplay : MonoBehaviour
 
     private bool menuIsVisible;
 
-    private bool blue = true;
+    private bool blue;
 
     public void Awake()
     {
         menuButton.gameObject.SetActive(true);
 
         if (PlayerPrefs.GetInt("team") == 0)
-            blue = true;
+            blue = false;
         else
             blue = false;
     }
