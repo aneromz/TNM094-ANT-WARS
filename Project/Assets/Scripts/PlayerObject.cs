@@ -76,8 +76,27 @@ public class PlayerObject : NetworkBehaviour {
     [ClientRpc]
     public void RpcLoadGameScene()
     {
+        AssignTeams();
+
         GameObject.Find("Lobby").SetActive(false);
         GameObject.Find("Menu Background").SetActive(false);
         SceneManager.LoadScene(1);
+    }
+
+    private void AssignTeams()
+    {
+        var players = FindObjectsOfType<PlayerIdentity>();
+        bool blue = true;
+        for (int i = 0; i < players.Length; ++i)
+        {
+            if (players[i].uniqueIdentity == PlayerPrefs.GetString("uniqueIdentity"))
+            {
+                if (blue)
+                    PlayerPrefs.SetInt("team", 0);
+                else
+                    PlayerPrefs.SetInt("team", 1);
+            }
+            blue = !blue;
+        }
     }
 }

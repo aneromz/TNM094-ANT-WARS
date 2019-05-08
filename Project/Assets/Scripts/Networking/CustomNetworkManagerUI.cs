@@ -89,7 +89,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         stopSearchButton.gameObject.SetActive(false);
         isSearchingForGame = false;
     }
-    
+
     [Command]
     private void CmdStartGame()
     {
@@ -201,11 +201,18 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         inGameMenuPanel.SetActive(menuIsVisible);
     }
 
-    public void ShowGameOverPanel()
+    public void ShowGameOverPanel(string team)
     {
         menuBackground.SetActive(true);
         menuBackground.GetComponentInChildren<Image>().color = new Color(0, 0, 0, 0.5f);
         FindObjectOfType<HeadUpDisplay>().DeactivateAllButtons();
         gameOverPanel.SetActive(true);
+
+        Text gameOverMessage = gameOverPanel.GetComponentInChildren<Text>();
+        if (team == "BlueHome")
+            gameOverMessage.text = "Blue Team Won!";
+        else
+            gameOverMessage.text = "Red Team Won!";
+
     }
 }
