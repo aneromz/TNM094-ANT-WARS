@@ -58,6 +58,13 @@ public class AntHomeCollider : MonoBehaviour
                 CanTakeDamage(false);
 
                 gameObject.SetActive(false);
+                if(tag == "RedHome")
+                {
+                    Debug.Log("Red team Won and Blue Team lost!");
+                }
+                else Debug.Log("Blue Team Won and Red team lost!"); 
+                
+
                 return;
             }
             
