@@ -37,12 +37,7 @@ public class AgentControl : NetworkBehaviour
 
 	void Update ()
     {
-        // Calculate path
-		agent.SetDestination(home.position);
-
-        // Set the position and rotation of the visible ant body
-        antBody.transform.position = sceneTransform.TransformPoint(transform.position);
-        antBody.transform.rotation = sceneTransform.rotation * transform.rotation * rotationOffset;
+       
 
         if (AntIsDead)
         {
@@ -51,7 +46,16 @@ public class AgentControl : NetworkBehaviour
             {
                 Destroy(gameObject);
             }
+            
         }
+        else
+        {
+            // Calculate path
+            agent.SetDestination(home.position);
+        }
+        // Set the position and rotation of the visible ant body
+        antBody.transform.position = sceneTransform.TransformPoint(transform.position);
+        antBody.transform.rotation = sceneTransform.rotation * transform.rotation * rotationOffset;
 
 
     }
