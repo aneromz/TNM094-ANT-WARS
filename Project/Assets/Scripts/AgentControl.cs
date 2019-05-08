@@ -65,11 +65,17 @@ public class AgentControl : NetworkBehaviour
     {
         if (!AntIsDead)
         {
-            SoundManager.PlaySound();
-            antBody.GetComponent<BoxCollider>().enabled = false;
-            antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
-            agent.enabled = false;
-            AntIsDead = true;
+            RpcMakeAntFlat();
         }
+    }
+
+    [ClientRpc]
+    void RpcMakeAntFlat()
+    {
+        SoundManager.PlaySound();
+        antBody.GetComponent<BoxCollider>().enabled = false;
+        antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
+        agent.enabled = false;
+        AntIsDead = true;
     }
 }
