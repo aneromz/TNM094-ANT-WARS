@@ -14,6 +14,19 @@ public class AgentControl : NetworkBehaviour
     float timeLeft = 3;
     bool AntIsDead = false;
 
+    private static int numRedAnts = 0;
+    private static int numBlueAnts = 0;
+
+    private void Awake()
+    {
+        if (tag == "BlueAnt")
+            ++numBlueAnts;
+        else
+            ++numRedAnts;
+
+        Debug.Log("Blue Ants: " + numBlueAnts);
+        Debug.Log("Red Ants: " + numRedAnts);
+    }
 
     // Use this for initialization
     void Start ()
@@ -25,7 +38,6 @@ public class AgentControl : NetworkBehaviour
 
         // The scenes transform used to simulate a parent transform
         sceneTransform = GameObject.Find("Map Content").transform;
-
         // Rotate the ant body to correct position
         rotationOffset = Quaternion.Euler(Mathf.PI / 2, 0, 0);
 
@@ -37,8 +49,6 @@ public class AgentControl : NetworkBehaviour
 
 	void Update ()
     {
-       
-
         if (AntIsDead)
         {
             timeLeft -= Time.deltaTime;
@@ -56,8 +66,6 @@ public class AgentControl : NetworkBehaviour
         // Set the position and rotation of the visible ant body
         antBody.transform.position = sceneTransform.TransformPoint(transform.position);
         antBody.transform.rotation = sceneTransform.rotation * transform.rotation * rotationOffset;
-
-
     }
 
     [Command]
@@ -76,5 +84,16 @@ public class AgentControl : NetworkBehaviour
         antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
         agent.enabled = false;
         AntIsDead = true;
+    }
+
+    private void OnDestroy()
+    {
+        if (tag == "BlueAnt")
+            --numBlueAnts;
+        else
+            --numRedAnts;
+
+        Debug.Log("Blue Ants: " + numBlueAnts);
+        Debug.Log("Red Ants: " + numRedAnts);
     }
 }
