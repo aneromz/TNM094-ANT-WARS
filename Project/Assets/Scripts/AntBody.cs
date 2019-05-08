@@ -9,7 +9,9 @@ public class AntBody : MonoBehaviour
 
     void OnMouseDown()
     {
-        TakeDamage();
+        SoundManager.PlaySound();
+        GetComponentInParent<AgentControl>().CmdDestroyAnt();
+        //TakeDamage();
        // GetComponentInParent<AgentControl>().CmdDestroyAnt();
     }
 

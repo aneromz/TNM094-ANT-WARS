@@ -72,7 +72,6 @@ public class AgentControl : NetworkBehaviour
     [ClientRpc]
     void RpcMakeAntFlat()
     {
-        SoundManager.PlaySound();
         antBody.GetComponent<BoxCollider>().enabled = false;
         antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
         agent.enabled = false;
