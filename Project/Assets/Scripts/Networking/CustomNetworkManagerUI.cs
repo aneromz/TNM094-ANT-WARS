@@ -13,6 +13,12 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
     // Menu buttons
     [SerializeField]
+    private Button playGameButton;
+    [SerializeField]
+    private Button helpButton;
+    [SerializeField]
+    private Button backHelpButton;
+    [SerializeField]
     private Button hostLobbyButton;
     [SerializeField]
     private Button exitGameButton;
@@ -24,12 +30,14 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     private Button startGameButton;
     [SerializeField]
     private Button stopSearchButton;
-    
+
     // Menu panels
     [SerializeField]
-    private GameObject optionsPanel;
+    private GameObject startPanel;
     [SerializeField]
-    private GameObject nameSelectionPanel;
+    private GameObject helpPanel;
+    [SerializeField]
+    private GameObject optionsPanel;
     [SerializeField]
     public GameObject lobbyPanel;
     [SerializeField]
@@ -54,7 +62,13 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
         DontDestroyOnLoad(this);
 
+
+
+
         // Add onclick functions to buttons
+        playGameButton.onClick.AddListener(playGame);
+        helpButton.onClick.AddListener(helpPage);
+        backHelpButton.onClick.AddListener(startMenu);
         hostLobbyButton.onClick.AddListener(HostGame);
         exitGameButton.onClick.AddListener(ExitGame);
         findLobbyButton.onClick.AddListener(ToggleGameSearch);
@@ -66,14 +80,13 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         menuIsVisible = false;
         inGameMenuPanel.SetActive(menuIsVisible);
 
-        // Arrange panel visibility
+        // Arrange panel visibility at game start
+        startPanel.SetActive(true);
         gameOverPanel.SetActive(false);
-        nameSelectionPanel.SetActive(true);
-        nameSelectionPanel.GetComponentInChildren<Button>().onClick.AddListener(SelectName);
+        helpPanel.SetActive(false);
         optionsPanel.SetActive(false);
         lobbyPanel.SetActive(false);
         stopSearchButton.gameObject.SetActive(false);
-
         isSearchingForGame = false;
     }
     
@@ -83,10 +96,20 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         FindObjectOfType<PlayerObject>().RpcLoadGameScene();
     }
 
-    public void SelectName()
+    private void playGame()
     {
-        nameSelectionPanel.SetActive(false);
         optionsPanel.SetActive(true);
+        startPanel.SetActive(false);
+    }
+    private void helpPage()
+    {
+        helpPanel.SetActive(true);
+        startPanel.SetActive(false);
+    }
+    private void startMenu()
+    {
+        startPanel.SetActive(true);
+        helpPanel.SetActive(false);
     }
 
     public void HostGame ()
