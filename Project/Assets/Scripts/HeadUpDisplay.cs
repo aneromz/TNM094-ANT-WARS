@@ -23,7 +23,7 @@ public class HeadUpDisplay : MonoBehaviour
         menuButton.gameObject.SetActive(true);
 
         if (PlayerPrefs.GetInt("team") == 0)
-            blue = false;
+            blue = true;
         else
             blue = false;
     }
