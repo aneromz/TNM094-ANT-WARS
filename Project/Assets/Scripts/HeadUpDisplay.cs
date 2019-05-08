@@ -21,6 +21,11 @@ public class HeadUpDisplay : MonoBehaviour
     public void Awake()
     {
         menuButton.gameObject.SetActive(true);
+
+        if (PlayerPrefs.GetInt("team") == 0)
+            blue = true;
+        else
+            blue = false;
     }
 
     public void Start ()
@@ -65,11 +70,6 @@ public class HeadUpDisplay : MonoBehaviour
         spawnButton1.gameObject.SetActive(menuIsVisible);
         spawnButton2.gameObject.SetActive(menuIsVisible);
         spawnButton3.gameObject.SetActive(menuIsVisible);
-    }
-
-    private void ChangeTeam()
-    {
-        blue = !blue;
     }
 
     public void DeactivateAllButtons()

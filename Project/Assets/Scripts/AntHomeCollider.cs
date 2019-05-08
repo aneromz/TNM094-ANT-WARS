@@ -54,7 +54,7 @@ public class AntHomeCollider : MonoBehaviour
             {
                 Debug.Log(tag + " is dead!");
 
-                FindObjectOfType<CustomNetworkManagerUI>().ShowGameOverPanel();
+                FindObjectOfType<CustomNetworkManagerUI>().ShowGameOverPanel(tag);
                 CanTakeDamage(false);
 
                 gameObject.SetActive(false);
