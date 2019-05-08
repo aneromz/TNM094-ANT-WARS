@@ -46,11 +46,18 @@ public class AntHomeCollider : MonoBehaviour
             {
                 Debug.Log(tag + " is dead!");
                 gameObject.SetActive(false);
+                if(tag == "RedHome")
+                {
+                    Debug.Log("Red team Won and Blue Team lost!");
+                }
+                else Debug.Log("Blue Team Won and Red team lost!"); 
+                
+
                 return;
             }
             
             // Reduce health
-            health -= 2f;
+            health -= 10f;
             healthBar.fillAmount = health / 100f;
 
             // Reset damage timer

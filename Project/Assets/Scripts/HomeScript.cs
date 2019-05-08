@@ -35,6 +35,7 @@ public class HomeScript : MonoBehaviour
             {
                 Debug.Log("you lost!");
                 gameObject.SetActive(false);
+
             }
             TakeDamage();
         }

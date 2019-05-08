@@ -11,6 +11,9 @@ public class AgentControl : NetworkBehaviour
     private Quaternion rotationOffset;
 
     private AntBody antBody;
+    float timeLeft = 3;
+    bool AntIsDead = false;
+
 
     // Use this for initialization
     void Start ()
@@ -40,11 +43,29 @@ public class AgentControl : NetworkBehaviour
         // Set the position and rotation of the visible ant body
         antBody.transform.position = sceneTransform.TransformPoint(transform.position);
         antBody.transform.rotation = sceneTransform.rotation * transform.rotation * rotationOffset;
+
+        if (AntIsDead)
+        {
+            timeLeft -= Time.deltaTime;
+            if (timeLeft < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+
     }
 
     [Command]
 	public void CmdDestroyAnt()
     {
-        Destroy (gameObject);
-	}
+        if (!AntIsDead)
+        {
+            SoundManager.PlaySound();
+            antBody.GetComponent<BoxCollider>().enabled = false;
+            antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
+            agent.enabled = false;
+            AntIsDead = true;
+        }
+    }
 }

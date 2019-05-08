@@ -16,7 +16,7 @@ public class AntBody : MonoBehaviour
     public void TakeDamage()
     {
 
-        health -= 40f;
+        health -= 100f;
         healthBar.fillAmount = health / 100f;
 
         if (health < 0.1f)
