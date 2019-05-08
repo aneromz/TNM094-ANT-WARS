@@ -36,6 +36,8 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     private GameObject inGameMenuPanel;
     [SerializeField]
     private GameObject menuBackground;
+    [SerializeField]
+    private GameObject gameOverPanel;
 
     private bool menuIsVisible;
     private bool isSearchingForGame;
@@ -65,6 +67,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         inGameMenuPanel.SetActive(menuIsVisible);
 
         // Arrange panel visibility
+        gameOverPanel.SetActive(false);
         nameSelectionPanel.SetActive(true);
         nameSelectionPanel.GetComponentInChildren<Button>().onClick.AddListener(SelectName);
         optionsPanel.SetActive(false);
@@ -109,9 +112,11 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     public void ExitGame()
     {
         menuBackground.SetActive(true);
+        gameOverPanel.SetActive(false);
 
         // Deactivate in game menu
-        ToggleMenu();
+        menuIsVisible = false;
+        inGameMenuPanel.SetActive(menuIsVisible);
 
         // Activate options panel
         optionsPanel.SetActive(true);
@@ -171,5 +176,13 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     {
         menuIsVisible = menuIsVisible ? false : true;
         inGameMenuPanel.SetActive(menuIsVisible);
+    }
+
+    public void ShowGameOverPanel()
+    {
+        menuBackground.SetActive(true);
+        menuBackground.GetComponentInChildren<Image>().color = new Color(0, 0, 0, 0.5f);
+        FindObjectOfType<HeadUpDisplay>().DeactivateAllButtons();
+        gameOverPanel.SetActive(true);
     }
 }
