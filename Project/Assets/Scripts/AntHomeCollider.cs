@@ -14,6 +14,12 @@ public class AntHomeCollider : MonoBehaviour
     private float interpolationTimer = COLOR_INTERPOLATION_TIME;
 
     private bool isTakingDamage = false;
+    private static bool canTakeDamage;
+
+    private void Awake()
+    {
+        CanTakeDamage(true);
+    }
 
     private void Update()
     {
@@ -27,11 +33,13 @@ public class AntHomeCollider : MonoBehaviour
     {
         if (collision.gameObject.tag == "RedAnt" && tag == "RedHome")
         {
-            TakeDamage();
+            if (canTakeDamage)
+                TakeDamage();
         }
         else if (collision.gameObject.tag == "BlueAnt" && tag == "BlueHome")
         {
-            TakeDamage();
+            if (canTakeDamage)
+                TakeDamage();
         }
     }
 
@@ -45,6 +53,10 @@ public class AntHomeCollider : MonoBehaviour
             if (health < 0.1f)
             {
                 Debug.Log(tag + " is dead!");
+
+                FindObjectOfType<CustomNetworkManagerUI>().ShowGameOverPanel(tag);
+                CanTakeDamage(false);
+
                 gameObject.SetActive(false);
                 if(tag == "RedHome")
                 {
@@ -78,5 +90,10 @@ public class AntHomeCollider : MonoBehaviour
             isTakingDamage = false;
             interpolationTimer = COLOR_INTERPOLATION_TIME;
         }
+    }
+
+    static private void CanTakeDamage(bool flag)
+    {
+        canTakeDamage = flag;
     }
 }

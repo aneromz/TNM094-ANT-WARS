@@ -13,6 +13,12 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
     // Menu buttons
     [SerializeField]
+    private Button playGameButton;
+    [SerializeField]
+    private Button helpButton;
+    [SerializeField]
+    private Button backHelpButton;
+    [SerializeField]
     private Button hostLobbyButton;
     [SerializeField]
     private Button exitGameButton;
@@ -24,18 +30,22 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     private Button startGameButton;
     [SerializeField]
     private Button stopSearchButton;
-    
+
     // Menu panels
     [SerializeField]
-    private GameObject optionsPanel;
+    private GameObject startPanel;
     [SerializeField]
-    private GameObject nameSelectionPanel;
+    private GameObject helpPanel;
+    [SerializeField]
+    private GameObject optionsPanel;
     [SerializeField]
     public GameObject lobbyPanel;
     [SerializeField]
     private GameObject inGameMenuPanel;
     [SerializeField]
     private GameObject menuBackground;
+    [SerializeField]
+    private GameObject gameOverPanel;
 
     private bool menuIsVisible;
     private bool isSearchingForGame;
@@ -52,7 +62,13 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
         DontDestroyOnLoad(this);
 
+
+
+
         // Add onclick functions to buttons
+        playGameButton.onClick.AddListener(playGame);
+        helpButton.onClick.AddListener(helpPage);
+        backHelpButton.onClick.AddListener(startMenu);
         hostLobbyButton.onClick.AddListener(HostGame);
         exitGameButton.onClick.AddListener(ExitGame);
         findLobbyButton.onClick.AddListener(ToggleGameSearch);
@@ -64,26 +80,36 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         menuIsVisible = false;
         inGameMenuPanel.SetActive(menuIsVisible);
 
-        // Arrange panel visibility
-        nameSelectionPanel.SetActive(true);
-        nameSelectionPanel.GetComponentInChildren<Button>().onClick.AddListener(SelectName);
+        // Arrange panel visibility at game start
+        startPanel.SetActive(true);
+        gameOverPanel.SetActive(false);
+        helpPanel.SetActive(false);
         optionsPanel.SetActive(false);
         lobbyPanel.SetActive(false);
         stopSearchButton.gameObject.SetActive(false);
-
         isSearchingForGame = false;
     }
-    
+
     [Command]
     private void CmdStartGame()
     {
         FindObjectOfType<PlayerObject>().RpcLoadGameScene();
     }
 
-    public void SelectName()
+    private void playGame()
     {
-        nameSelectionPanel.SetActive(false);
         optionsPanel.SetActive(true);
+        startPanel.SetActive(false);
+    }
+    private void helpPage()
+    {
+        helpPanel.SetActive(true);
+        startPanel.SetActive(false);
+    }
+    private void startMenu()
+    {
+        startPanel.SetActive(true);
+        helpPanel.SetActive(false);
     }
 
     public void HostGame ()
@@ -109,9 +135,11 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     public void ExitGame()
     {
         menuBackground.SetActive(true);
+        gameOverPanel.SetActive(false);
 
         // Deactivate in game menu
-        ToggleMenu();
+        menuIsVisible = false;
+        inGameMenuPanel.SetActive(menuIsVisible);
 
         // Activate options panel
         optionsPanel.SetActive(true);
@@ -171,5 +199,20 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     {
         menuIsVisible = menuIsVisible ? false : true;
         inGameMenuPanel.SetActive(menuIsVisible);
+    }
+
+    public void ShowGameOverPanel(string team)
+    {
+        menuBackground.SetActive(true);
+        menuBackground.GetComponentInChildren<Image>().color = new Color(0, 0, 0, 0.5f);
+        FindObjectOfType<HeadUpDisplay>().DeactivateAllButtons();
+        gameOverPanel.SetActive(true);
+
+        Text gameOverMessage = gameOverPanel.GetComponentInChildren<Text>();
+        if (team == "BlueHome")
+            gameOverMessage.text = "Blue Team Won!";
+        else
+            gameOverMessage.text = "Red Team Won!";
+
     }
 }

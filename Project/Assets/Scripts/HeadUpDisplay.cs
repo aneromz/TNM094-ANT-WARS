@@ -16,9 +16,17 @@ public class HeadUpDisplay : MonoBehaviour
 
     private bool menuIsVisible;
 
-    private Toggle teamToggle;
-
     private bool blue = true;
+
+    public void Awake()
+    {
+        menuButton.gameObject.SetActive(true);
+
+        if (PlayerPrefs.GetInt("team") == 0)
+            blue = true;
+        else
+            blue = false;
+    }
 
     public void Start ()
     {
@@ -27,11 +35,6 @@ public class HeadUpDisplay : MonoBehaviour
         spawnButton2.onClick.AddListener(SpawnAntOnPosition2);
         spawnButton3.onClick.AddListener(SpawnAntOnPosition3);
         menuButton.onClick.AddListener(ToggleMenu);
-        teamToggle = GetComponentInChildren<Toggle>();
-
-        teamToggle.onValueChanged.AddListener(delegate {
-            ChangeTeam(teamToggle);
-        });
     }
 
     private void SpawnAntOnPosition1 ()
@@ -69,8 +72,11 @@ public class HeadUpDisplay : MonoBehaviour
         spawnButton3.gameObject.SetActive(menuIsVisible);
     }
 
-    private void ChangeTeam(Toggle change)
+    public void DeactivateAllButtons()
     {
-        blue = !blue;
+        spawnButton1.gameObject.SetActive(false);
+        spawnButton2.gameObject.SetActive(false);
+        spawnButton3.gameObject.SetActive(false);
+        menuButton.gameObject.SetActive(false);
     }
 }
