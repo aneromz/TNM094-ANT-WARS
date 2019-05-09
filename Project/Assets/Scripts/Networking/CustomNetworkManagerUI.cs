@@ -114,7 +114,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
     public void HostGame ()
     {
-        manager.StartHost();
+        manager.StartHost(null, 4);
         discovery.StartBroadcast();
 
         optionsPanel.SetActive(false);
@@ -203,8 +203,6 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
     public void ShowGameOverPanel(string team)
     {
-        menuBackground.SetActive(true);
-        menuBackground.GetComponentInChildren<Image>().color = new Color(0, 0, 0, 0.5f);
         FindObjectOfType<HeadUpDisplay>().DeactivateAllButtons();
         gameOverPanel.SetActive(true);
 

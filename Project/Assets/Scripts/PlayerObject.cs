@@ -20,15 +20,6 @@ public class PlayerObject : NetworkBehaviour {
         DontDestroyOnLoad(this);
     }
 
-    void Update () {
-        /*
-		if (isLocalPlayer == false) {
-			return;
-		}
-        
-        */
-    }
-
     [Command]
 	public void CmdSpawnMyAnt(int key, bool blue)
 	{
@@ -86,7 +77,7 @@ public class PlayerObject : NetworkBehaviour {
     private void AssignTeams()
     {
         var players = FindObjectsOfType<PlayerIdentity>();
-        bool blue = true;
+        bool blue = false;
         for (int i = 0; i < players.Length; ++i)
         {
             if (players[i].uniqueIdentity == PlayerPrefs.GetString("uniqueIdentity"))

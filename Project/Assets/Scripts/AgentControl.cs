@@ -56,7 +56,6 @@ public class AgentControl : NetworkBehaviour
             {
                 Destroy(gameObject);
             }
-            
         }
         else
         {
@@ -71,19 +70,18 @@ public class AgentControl : NetworkBehaviour
     [Command]
 	public void CmdDestroyAnt()
     {
-        if (!AntIsDead)
-        {
-            RpcMakeAntFlat();
-        }
+        RpcMakeAntFlat();
     }
 
     [ClientRpc]
     void RpcMakeAntFlat()
     {
-        antBody.GetComponent<BoxCollider>().enabled = false;
-        antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
-        agent.enabled = false;
-        AntIsDead = true;
+        if (!AntIsDead) { 
+            antBody.GetComponent<BoxCollider>().enabled = false;
+            antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
+            agent.enabled = false;
+            AntIsDead = true;
+        }
     }
 
     private void OnDestroy()
