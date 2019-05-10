@@ -78,7 +78,7 @@ public class AgentControl : NetworkBehaviour
     {
         if (!AntIsDead) { 
             antBody.GetComponent<BoxCollider>().enabled = false;
-            antBody.transform.GetChild(0).localScale += new Vector3(10, 0, -5);
+            antBody.transform.GetChild(0).localScale += new Vector3(0.1f, -0.1f, 0.15f);
             agent.enabled = false;
             AntIsDead = true;
         }

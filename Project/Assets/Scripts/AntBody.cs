@@ -11,20 +11,7 @@ public class AntBody : MonoBehaviour
         SoundManager.PlaySound();
 
         AgentControl ant = GetComponentInParent<AgentControl>();
-        GameObject.Find(PlayerPrefs.GetString("uniqueIdentity")).GetComponentInChildren<NetworkAntDestroyer>().TellServerToDestroyAnt(ant.gameObject);
-
-        //TakeDamage();
-        // GetComponentInParent<AgentControl>().CmdDestroyAnt();
+        GameObject.Find(PlayerPrefs.GetString("uniqueIdentity")).GetComponentInChildren<NetworkObjectHandler>().TellServerToDestroyAnt(ant.gameObject);
     }
 
-    public void TakeDamage()
-    {
-        health -= 100f;
-        healthBar.fillAmount = health / 100f;
-
-        if (health < 0.1f)
-        {
-            GetComponentInParent<AgentControl>().CmdDestroyAnt();
-        }
-    }
 }
