@@ -14,6 +14,8 @@ public class HeadUpDisplay : MonoBehaviour
     [SerializeField]
     private Button menuButton;
 
+    public PlayerObject player;
+
     private bool menuIsVisible;
 
     private bool blue;
@@ -22,10 +24,18 @@ public class HeadUpDisplay : MonoBehaviour
     {
         menuButton.gameObject.SetActive(true);
 
-        if (PlayerPrefs.GetInt("team") == 0)
-            blue = true;
-        else
-            blue = false;
+        blue = (PlayerPrefs.GetInt("team") == 0);
+        
+        var players = FindObjectsOfType<PlayerIdentity>();
+        for (int i = 0; i < players.Length; ++i)
+        {
+            if (players[i].uniqueIdentity == PlayerPrefs.GetString("uniqueIdentity"))
+            {
+                player = players[i].GetComponentInParent<PlayerObject>();
+                Debug.Log("Unique Identity: " + players[i].uniqueIdentity);
+            }
+        }
+        
     }
 
     public void Start ()
@@ -39,23 +49,22 @@ public class HeadUpDisplay : MonoBehaviour
 
     private void SpawnAntOnPosition1 ()
     {
-        FindObjectOfType<PlayerObject>().CmdSpawnMyAnt(1, blue);
+        player.CmdSpawnMyAnt(1, blue);
     }
 
     private void SpawnAntOnPosition2()
     {
-        FindObjectOfType<PlayerObject>().CmdSpawnMyAnt(2, blue);
+        player.CmdSpawnMyAnt(2, blue);
     }
 
     private void SpawnAntOnPosition3()
     {
-        FindObjectOfType<PlayerObject>().CmdSpawnMyAnt(3, blue);
+        player.CmdSpawnMyAnt(3, blue);
     }
 
     private void ToggleMenu()
     {
         ToggleButtonVisibility();
-
         FindObjectOfType<CustomNetworkManagerUI>().ToggleMenu();
     }
 
