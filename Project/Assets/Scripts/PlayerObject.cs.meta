@@ -1,10 +1,19 @@
 fileFormatVersion: 2
 guid: 663dff3d2da7bdd47af34c5e4e005298
-timeCreated: 1554190534
-licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - BlueAntPrefab: {fileID: 2948028142765492899, guid: 9bdd3c39c2ef843448c7ab4fc8d0b3ab,
+      type: 3}
+  - RedAntPrefab: {fileID: 1462175156478530329, guid: 96ac935fef69eab47a5da247b1c0b48c,
+      type: 3}
+  - BlueLeftSpawn: {instanceID: 0}
+  - BlueMiddleSpawn: {instanceID: 0}
+  - BlueRightSpawn: {instanceID: 0}
+  - RedLeftSpawn: {instanceID: 0}
+  - RedMiddleSpawn: {instanceID: 0}
+  - RedRightSpawn: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

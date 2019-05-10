@@ -39,7 +39,7 @@ public class AgentControl : NetworkBehaviour
         // The scenes transform used to simulate a parent transform
         sceneTransform = GameObject.Find("Map Content").transform;
         // Rotate the ant body to correct position
-        rotationOffset = Quaternion.Euler(Mathf.PI / 2, 0, 0);
+        rotationOffset = Quaternion.Euler(0, Mathf.PI / 2, 0);
 
         if (tag == "BlueAnt")
             home = GameObject.FindWithTag("BlueHome").transform;
