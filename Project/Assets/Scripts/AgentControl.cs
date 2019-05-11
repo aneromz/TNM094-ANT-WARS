@@ -14,22 +14,8 @@ public class AgentControl : NetworkBehaviour
     float timeLeft = 3;
     bool AntIsDead = false;
 
-    private static int numRedAnts = 0;
-    private static int numBlueAnts = 0;
-
     [SyncVar]
     private string ownerId;
-
-    private void Awake()
-    {
-        if (tag == "BlueAnt")
-            ++numBlueAnts;
-        else
-            ++numRedAnts;
-
-        Debug.Log("Blue Ants: " + numBlueAnts);
-        Debug.Log("Red Ants: " + numRedAnts);
-    }
 
     // Use this for initialization
     void Start ()
@@ -86,17 +72,6 @@ public class AgentControl : NetworkBehaviour
             agent.enabled = false;
             AntIsDead = true;
         }
-    }
-
-    private void OnDestroy()
-    {
-        if (tag == "BlueAnt")
-            --numBlueAnts;
-        else
-            --numRedAnts;
-
-        Debug.Log("Blue Ants: " + numBlueAnts);
-        Debug.Log("Red Ants: " + numRedAnts);
     }
 
     public void SetOwnerId(string id)
