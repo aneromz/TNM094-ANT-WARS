@@ -68,7 +68,7 @@ public class PlayerObject : NetworkBehaviour {
     [ClientRpc]
     public void RpcLoadGameScene()
     {
-        AssignTeams();
+        //AssignTeams();
 
         GameObject.Find("Lobby").SetActive(false);
         GameObject.Find("Menu Background").SetActive(false);

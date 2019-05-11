@@ -50,6 +50,13 @@ public class LobbyPlayerList : NetworkBehaviour
         {
             Text nameText = Instantiate(namePrefab, transform);
             nameText.text = players[i - 1].playerName;
+
+            if (players[i - 1].uniqueIdentity == PlayerPrefs.GetString("uniqueIdentity"))
+            {
+                nameText.fontStyle = FontStyle.Bold;
+                nameText.color = Color.black;
+            }
+                
         }
     }
 }
