@@ -8,6 +8,8 @@ public class LobbyPlayerList : NetworkBehaviour
 {
     [SerializeField]
     private Text namePrefab;
+    [SerializeField]
+    private string team;
 
     private void Awake()
     {
@@ -48,15 +50,18 @@ public class LobbyPlayerList : NetworkBehaviour
 
         for (int i = players.Length; i > 0; --i)
         {
-            Text nameText = Instantiate(namePrefab, transform);
-            nameText.text = players[i - 1].playerName;
 
-            if (players[i - 1].uniqueIdentity == PlayerPrefs.GetString("uniqueIdentity"))
+            if (players[i - 1].team == team)
             {
-                nameText.fontStyle = FontStyle.Bold;
-            }
+                Text nameText = Instantiate(namePrefab, transform);
+                nameText.text = players[i - 1].playerName;
 
-            nameText.color = (players[i - 1].team == "blue") ? Color.blue : Color.red;
+                if (players[i - 1].uniqueIdentity == PlayerPrefs.GetString("uniqueIdentity"))
+                {
+                    nameText.fontStyle = FontStyle.Bold;
+                }
+                //nameText.color = (players[i - 1].team == "blue") ? Color.blue : Color.red;
+            }
         }
     }
 }
