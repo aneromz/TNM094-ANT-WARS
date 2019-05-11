@@ -3,9 +3,6 @@ using UnityEngine.UI;
 
 public class AntBody : MonoBehaviour
 {
-    public float health = 100f;
-    public Image healthBar;
-
     void OnMouseDown()
     {
         SoundManager.PlaySound();

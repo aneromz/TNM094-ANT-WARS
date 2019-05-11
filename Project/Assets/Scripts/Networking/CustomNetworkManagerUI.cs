@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -62,9 +61,6 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
         DontDestroyOnLoad(this);
 
-
-
-
         // Add onclick functions to buttons
         playGameButton.onClick.AddListener(playGame);
         helpButton.onClick.AddListener(helpPage);
@@ -93,6 +89,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     [Command]
     private void CmdStartGame()
     {
+        discovery.StopBroadcast();
         FindObjectOfType<PlayerObject>().RpcLoadGameScene();
     }
 
@@ -145,10 +142,10 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         optionsPanel.SetActive(true);
 
         // Load start menu scene
-        SceneManager.LoadScene("StartMenu");
+        //SceneManager.LoadScene("StartMenu");
+        NetworkManager.singleton.ServerChangeScene("StartMenu");
 
         manager.StopHost();
-        discovery.StopBroadcast();
         discovery.Reset();
     }
 
@@ -169,7 +166,6 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
         // Stop listen for broadcasts
         discovery.StopBroadcast(); 
-        discovery.CleanUpCoroutines();
     }
 
     public void ToggleGameSearch()
@@ -177,6 +173,12 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         // Switch
         isSearchingForGame = !isSearchingForGame;
 
+        discovery.JoinGameOnRecievedBroadcast(isSearchingForGame);
+
+        stopSearchButton.gameObject.SetActive(isSearchingForGame);
+        findLobbyButton.gameObject.SetActive(!isSearchingForGame);
+        hostLobbyButton.gameObject.SetActive(!isSearchingForGame);
+        /*
         if (isSearchingForGame)
         {
             discovery.JoinGameOnRecievedBroadcast(true);
@@ -193,6 +195,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
             findLobbyButton.gameObject.SetActive(true);
             hostLobbyButton.gameObject.SetActive(true);
         }
+        */
     }
 
     public void ToggleMenu()

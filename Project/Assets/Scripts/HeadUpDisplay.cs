@@ -35,7 +35,6 @@ public class HeadUpDisplay : MonoBehaviour
                 Debug.Log("Unique Identity: " + players[i].uniqueIdentity);
             }
         }
-        
     }
 
     public void Start ()

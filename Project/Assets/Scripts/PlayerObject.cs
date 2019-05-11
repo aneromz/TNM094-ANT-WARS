@@ -61,6 +61,7 @@ public class PlayerObject : NetworkBehaviour {
                 return;
         }
 
+        ant.GetComponentInChildren<AgentControl>().SetOwnerId(PlayerPrefs.GetString("uniqueIdentity"));
         NetworkServer.SpawnWithClientAuthority(ant, connectionToClient);
 	}
 
@@ -71,7 +72,9 @@ public class PlayerObject : NetworkBehaviour {
 
         GameObject.Find("Lobby").SetActive(false);
         GameObject.Find("Menu Background").SetActive(false);
-        SceneManager.LoadScene(1);
+        NetworkManager.singleton.ServerChangeScene("Game");
+        //NetworkManager.singleton.ServerChangeScene("GameNoAR");
+        //SceneManager.LoadScene(1);
     }
 
     private void AssignTeams()

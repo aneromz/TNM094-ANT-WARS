@@ -17,6 +17,9 @@ public class AgentControl : NetworkBehaviour
     private static int numRedAnts = 0;
     private static int numBlueAnts = 0;
 
+    [SyncVar]
+    private string ownerId;
+
     private void Awake()
     {
         if (tag == "BlueAnt")
@@ -76,7 +79,8 @@ public class AgentControl : NetworkBehaviour
     [ClientRpc]
     void RpcMakeAntFlat()
     {
-        if (!AntIsDead) { 
+        if (!AntIsDead) {
+            antBody.GetComponentInChildren<Animator>().enabled = false;
             antBody.GetComponent<BoxCollider>().enabled = false;
             antBody.transform.GetChild(0).localScale += new Vector3(0.1f, -0.1f, 0.15f);
             agent.enabled = false;
@@ -93,5 +97,15 @@ public class AgentControl : NetworkBehaviour
 
         Debug.Log("Blue Ants: " + numBlueAnts);
         Debug.Log("Red Ants: " + numRedAnts);
+    }
+
+    public void SetOwnerId(string id)
+    {
+        ownerId = id;
+    }
+
+    public string GetOwnerId()
+    {
+        return ownerId;
     }
 }

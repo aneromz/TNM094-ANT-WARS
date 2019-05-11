@@ -15,6 +15,17 @@ public class NetworkObjectHandler : NetworkBehaviour
     private void CmdDestroyAnt(GameObject ant)
     {
         ant.GetComponentInChildren<AgentControl>().CmdDestroyAnt();
-        //NetworkServer.Destroy(ant);
+    }
+
+    [Client]
+    public void TellServerToDamageHome(GameObject home)
+    {
+        CmdDamageHome(home);
+    }
+
+    [Command]
+    private void CmdDamageHome(GameObject home)
+    {
+        home.GetComponentInChildren<AntHomeNetwork>().CmdTakeDamage();
     }
 }
