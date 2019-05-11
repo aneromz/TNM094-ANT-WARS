@@ -5,6 +5,7 @@ public class PlayerIdentity : NetworkBehaviour
 {
     [SyncVar] public string uniqueIdentity;
     [SyncVar] public string playerName;
+    [SyncVar] public string team;
     private NetworkInstanceId netIdentity;
 
     public override void OnStartLocalPlayer()
@@ -12,6 +13,7 @@ public class PlayerIdentity : NetworkBehaviour
         SetPlayerName();
         GetNetIdentity();
         SetIdentity();
+        SetTeam();
 
         // Every time a new player connects, refresh player identities
         CmdRefreshPlayerIdentities();
@@ -78,5 +80,23 @@ public class PlayerIdentity : NetworkBehaviour
     void CmdGiveServerPlayerName(string name)
     {
         playerName = name;
+    }
+
+    [Client]
+    public void SetTeam()
+    {
+        string teamInfo = "";
+        if (FindObjectsOfType<PlayerObject>().Length % 2 == 0)
+            teamInfo = "red";
+        else
+            teamInfo = "blue";
+        PlayerPrefs.SetString("team", teamInfo);
+        CmdGiveServerTeamInfo(teamInfo);
+    }
+
+    [Command]
+    void CmdGiveServerTeamInfo(string teamInfo)
+    {
+        team = teamInfo;
     }
 }

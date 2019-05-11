@@ -25,7 +25,7 @@ public class HeadUpDisplay : MonoBehaviour
 
     public void Awake()
     {
-        blue = (PlayerPrefs.GetInt("team") == 0);
+        blue = (PlayerPrefs.GetString("team") == "blue");
         
         var players = FindObjectsOfType<PlayerIdentity>();
         for (int i = 0; i < players.Length; ++i)

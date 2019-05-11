@@ -54,9 +54,9 @@ public class LobbyPlayerList : NetworkBehaviour
             if (players[i - 1].uniqueIdentity == PlayerPrefs.GetString("uniqueIdentity"))
             {
                 nameText.fontStyle = FontStyle.Bold;
-                nameText.color = Color.black;
             }
-                
+
+            nameText.color = (players[i - 1].team == "blue") ? Color.blue : Color.red;
         }
     }
 }
