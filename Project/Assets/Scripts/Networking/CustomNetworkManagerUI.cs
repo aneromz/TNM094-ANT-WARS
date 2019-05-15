@@ -18,6 +18,8 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     [SerializeField]
     private Button backHelpButton;
     [SerializeField]
+    private Button backOptionsButton;
+    [SerializeField]
     private Button hostLobbyButton;
     [SerializeField]
     private Button exitGameButton;
@@ -65,6 +67,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         playGameButton.onClick.AddListener(playGame);
         helpButton.onClick.AddListener(helpPage);
         backHelpButton.onClick.AddListener(startMenu);
+        backOptionsButton.onClick.AddListener(startMenu);
         hostLobbyButton.onClick.AddListener(HostGame);
         exitGameButton.onClick.AddListener(ExitGame);
         findLobbyButton.onClick.AddListener(ToggleGameSearch);
@@ -107,6 +110,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     {
         startPanel.SetActive(true);
         helpPanel.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
     public void HostGame ()
