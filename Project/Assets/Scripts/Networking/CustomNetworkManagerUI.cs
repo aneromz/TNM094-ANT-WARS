@@ -117,6 +117,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     {
         manager.StartHost(null, 4);
         discovery.StartBroadcast();
+       
 
         optionsPanel.SetActive(false);
         lobbyPanel.SetActive(true);
@@ -176,12 +177,12 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     {
         // Switch
         isSearchingForGame = !isSearchingForGame;
-
         discovery.JoinGameOnRecievedBroadcast(isSearchingForGame);
 
         stopSearchButton.gameObject.SetActive(isSearchingForGame);
         findLobbyButton.gameObject.SetActive(!isSearchingForGame);
         hostLobbyButton.gameObject.SetActive(!isSearchingForGame);
+        backOptionsButton.gameObject.SetActive(!isSearchingForGame);
         /*
         if (isSearchingForGame)
         {
