@@ -23,6 +23,8 @@ public class HeadUpDisplay : MonoBehaviour
     private int availableResources;
     private Text resourceDisplay;
 
+    private const int RESOURCE_TICK_VALUE = 1;
+
     public void Awake()
     {
         blue = (PlayerPrefs.GetString("team") == "blue");
@@ -142,7 +144,7 @@ public class HeadUpDisplay : MonoBehaviour
     {
         if (availableResources <= resourceCapacity)
         {
-            availableResources += 2;
+            availableResources += RESOURCE_TICK_VALUE;
 
             if (availableResources > resourceCapacity)
                 availableResources = resourceCapacity;
