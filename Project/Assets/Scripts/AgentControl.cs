@@ -38,6 +38,7 @@ public class AgentControl : NetworkBehaviour
 
 	void Update ()
     {
+        
         if (AntIsDead)
         {
             timeLeft -= Time.deltaTime;

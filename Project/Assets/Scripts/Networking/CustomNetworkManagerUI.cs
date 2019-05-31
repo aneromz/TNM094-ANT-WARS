@@ -31,6 +31,8 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     private Button startGameButton;
     [SerializeField]
     private Button stopSearchButton;
+    [SerializeField]
+    private Button playAgainButton;
 
     // Menu panels
     [SerializeField]
@@ -74,6 +76,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         exitLobbyButton.onClick.AddListener(ExitLobby);
         startGameButton.onClick.AddListener(CmdStartGame);
         stopSearchButton.onClick.AddListener(ToggleGameSearch);
+        playAgainButton.onClick.AddListener(playGame);
 
         // Deactivate in game menu
         menuIsVisible = false;
@@ -100,6 +103,10 @@ public class CustomNetworkManagerUI : NetworkBehaviour
     {
         optionsPanel.SetActive(true);
         startPanel.SetActive(false);
+
+        gameOverPanel.SetActive(false);
+        menuBackground.SetActive(true);
+        NetworkManager.singleton.ServerChangeScene("StartMenu");
     }
     private void helpPage()
     {
