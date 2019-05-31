@@ -22,6 +22,8 @@ public class HeadUpDisplay : MonoBehaviour
     private int resourceCapacity;
     private int availableResources;
     private Text resourceDisplay;
+    public Canvas resourceBar;
+    public Image eggBar;
 
     private const int RESOURCE_TICK_VALUE = 1;
 
@@ -117,6 +119,7 @@ public class HeadUpDisplay : MonoBehaviour
         spawnButton2.gameObject.SetActive(menuIsVisible);
         spawnButton3.gameObject.SetActive(menuIsVisible);
         resourceDisplay.gameObject.SetActive(menuIsVisible);
+        resourceBar.gameObject.SetActive(menuIsVisible);
     }
 
     public void DeactivateAllButtons()
@@ -126,6 +129,7 @@ public class HeadUpDisplay : MonoBehaviour
         spawnButton3.gameObject.SetActive(false);
         menuButton.gameObject.SetActive(false);
         resourceDisplay.gameObject.SetActive(false);
+        resourceBar.gameObject.SetActive(false);
     }
 
     private void DecreaseResources()
@@ -138,6 +142,7 @@ public class HeadUpDisplay : MonoBehaviour
     {
         string output = availableResources + " / " + resourceCapacity;
         resourceDisplay.text = output;
+        eggBar.fillAmount = availableResources / 20f;
     }
 
     IEnumerator IncreaseResourcesTick(float waitTime)
