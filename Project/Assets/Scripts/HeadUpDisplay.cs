@@ -55,6 +55,9 @@ public class HeadUpDisplay : MonoBehaviour
         spawnButton2.onClick.AddListener(SpawnAntOnPosition2);
         spawnButton3.onClick.AddListener(SpawnAntOnPosition3);
         menuButton.onClick.AddListener(ToggleMenu);
+        spawnButton1.gameObject.SetActive(false);
+        spawnButton2.gameObject.SetActive(false);
+        spawnButton3.gameObject.SetActive(false);
 
         // Add color to buttons
         Color32 buttonColor;
@@ -74,7 +77,7 @@ public class HeadUpDisplay : MonoBehaviour
         StartCoroutine(IncreaseResourcesTick(2.0f));
     }
 
-    private void SpawnAntOnPosition1 ()
+    public void SpawnAntOnPosition1 ()
     {
         if (availableResources <= 0)
             return;
@@ -83,7 +86,7 @@ public class HeadUpDisplay : MonoBehaviour
         player.CmdSpawnMyAnt(1, blue);
     }
 
-    private void SpawnAntOnPosition2()
+    public void SpawnAntOnPosition2()
     {
         if (availableResources <= 0)
             return;
@@ -92,7 +95,7 @@ public class HeadUpDisplay : MonoBehaviour
         player.CmdSpawnMyAnt(2, blue);
     }
 
-    private void SpawnAntOnPosition3()
+    public void SpawnAntOnPosition3()
     {
         if (availableResources <= 0)
             return;
