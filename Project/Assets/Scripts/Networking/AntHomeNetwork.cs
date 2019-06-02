@@ -4,6 +4,8 @@ public class AntHomeNetwork : NetworkBehaviour
 {
     [SyncVar]
     private float health = 100f;
+    [SyncVar]
+    private int currentStage = 1;
 
     public AntHomeCollider homeCollider;
 
@@ -29,6 +31,25 @@ public class AntHomeNetwork : NetworkBehaviour
 
         // Update health bar on all clients
         RpcUpdateHealthBar();
+
+        if (health < 75f && currentStage == 1)
+        {
+            currentStage = 2;
+            RpcUpdateStage(currentStage);
+        }
+        else if (health < 50f && currentStage == 2)
+        {
+            currentStage = 3;
+            RpcUpdateStage(currentStage);
+        }
+        else if (health < 25f && currentStage == 3)
+        {
+            currentStage = 4;
+            RpcUpdateStage(currentStage);
+        }
+
+
+
     }
 
     [ClientRpc]
@@ -44,4 +65,9 @@ public class AntHomeNetwork : NetworkBehaviour
         FindObjectOfType<CustomNetworkManagerUI>().ShowGameOverPanel(tag);
     }
 
+    [ClientRpc]
+    private void RpcUpdateStage(int stage)
+    {
+        homeCollider.SetStage(stage);
+    }
 }

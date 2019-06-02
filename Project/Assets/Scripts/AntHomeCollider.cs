@@ -18,11 +18,23 @@ public class AntHomeCollider : MonoBehaviour
 
     private NetworkObjectHandler networkHandler;
 
+    public GameObject stage1;
+    public GameObject stage2;
+    public GameObject stage3;
+    public GameObject stage4;
+
+    private int currentStage;
+
     private void Awake()
     {
         CanTakeDamage(true);
 
         networkHandler = GameObject.Find(PlayerPrefs.GetString("uniqueIdentity")).GetComponentInChildren<NetworkObjectHandler>();
+
+        stage1.SetActive(true);
+        stage2.SetActive(false);
+        stage3.SetActive(false);
+        stage4.SetActive(false);
     }
 
     private void Update()
@@ -69,6 +81,27 @@ public class AntHomeCollider : MonoBehaviour
     public void UpdateHealthBar(float currentHealth)
     {
         healthBar.fillAmount = currentHealth / 100f;
+    }
+
+    public void SetStage(int stage)
+    {
+        switch (stage)
+        {
+            case 2:
+                stage1.SetActive(false);
+                stage2.SetActive(true);
+                break;
+            case 3:
+                stage2.SetActive(false);
+                stage3.SetActive(true);
+                break;
+            case 4:
+                stage3.SetActive(false);
+                stage4.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     private void DisplayWarningSignal()
