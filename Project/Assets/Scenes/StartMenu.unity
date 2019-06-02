@@ -445,7 +445,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4843810487196662}
-  - component: {fileID: 4545751335812955579}
   m_Layer: 0
   m_Name: BlueHome
   m_TagString: BlueHome
@@ -462,7 +461,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4978792789422712}
-  - component: {fileID: 5418208661546817922}
   m_Layer: 0
   m_Name: RedHome
   m_TagString: RedHome
@@ -657,11 +655,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 597891301564097655, guid: 23588a882c6a92444ac44b694f57c340,
-        type: 3}
-      propertyPath: m_Name
-      value: RedMiddleSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 597891301564097652, guid: 23588a882c6a92444ac44b694f57c340,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -716,6 +709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 597891301564097655, guid: 23588a882c6a92444ac44b694f57c340,
+        type: 3}
+      propertyPath: m_Name
+      value: RedMiddleSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23588a882c6a92444ac44b694f57c340, type: 3}
@@ -967,11 +965,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 4898112376702888880, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
-        type: 3}
-      propertyPath: m_Name
-      value: RedLeftSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 4898112376702888883, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1026,6 +1019,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898112376702888880, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
+        type: 3}
+      propertyPath: m_Name
+      value: RedLeftSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f, type: 3}
@@ -1142,7 +1140,6 @@ GameObject:
   - component: {fileID: 7345368139901728783}
   - component: {fileID: 127378346429852875}
   - component: {fileID: 7242978197451042633}
-  - component: {fileID: 5009031762679225853}
   m_Layer: 0
   m_Name: Body
   m_TagString: RedHome
@@ -1233,18 +1230,6 @@ GameObject:
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!114 &3735167416256600795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926703687613090903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520461e756d9fc440bd456c424f7f6d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &3747460472522549044
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1260,11 +1245,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 3998252987217984341, guid: c2d3e828aa9e24140aba06a62a10fc92,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueMiddleSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 3998252987217984336, guid: c2d3e828aa9e24140aba06a62a10fc92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1320,6 +1300,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3998252987217984341, guid: c2d3e828aa9e24140aba06a62a10fc92,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueMiddleSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d3e828aa9e24140aba06a62a10fc92, type: 3}
 --- !u!4 &3788323484246393288 stripped
@@ -1351,11 +1336,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 4270931382066602374, guid: 62463d86a027c044688fa17444443342,
-        type: 3}
-      propertyPath: m_Name
-      value: RedRightSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 4270931382066602373, guid: 62463d86a027c044688fa17444443342,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1411,6 +1391,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4270931382066602374, guid: 62463d86a027c044688fa17444443342,
+        type: 3}
+      propertyPath: m_Name
+      value: RedRightSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62463d86a027c044688fa17444443342, type: 3}
 --- !u!4 &4446650492405005713 stripped
@@ -1433,18 +1418,6 @@ Transform:
   m_Father: {fileID: 7705772143161242402}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4545751335812955579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002796134410360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520461e756d9fc440bd456c424f7f6d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4572687475069316273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1429,6 @@ GameObject:
   - component: {fileID: 7705772143161242402}
   - component: {fileID: 2099330162888815602}
   - component: {fileID: 1490876039150889583}
-  - component: {fileID: 8331060152753526817}
   m_Layer: 0
   m_Name: Body
   m_TagString: BlueHome
@@ -1491,24 +1463,6 @@ Transform:
   m_Father: {fileID: 7724839890326202007}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5009031762679225853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3510432616752712930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e11639d345adb04eab0a64b0cbbc3fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  homeNetwork: {fileID: 0}
-  stage1: {fileID: 7343796570352290365}
-  stage2: {fileID: 5181776945707096993}
-  stage3: {fileID: 7399728627979437560}
-  stage4: {fileID: 2440516869398285667}
 --- !u!4 &5044693798333334040
 Transform:
   m_ObjectHideFlags: 0
@@ -1541,18 +1495,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5418208661546817922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914974059123146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520461e756d9fc440bd456c424f7f6d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5431179925478945612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1560,11 +1502,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 8911995441751795416, guid: 8da52b05f4ccf2247964afff27148bf3,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueRightSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 8911995441751795419, guid: 8da52b05f4ccf2247964afff27148bf3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1619,6 +1556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8911995441751795416, guid: 8da52b05f4ccf2247964afff27148bf3,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueRightSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8da52b05f4ccf2247964afff27148bf3, type: 3}
@@ -2137,11 +2079,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 6934486946709427963, guid: 8a101c42979e63d44a8b462f6efb8f06,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueLeftSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 6934486946709427960, guid: 8a101c42979e63d44a8b462f6efb8f06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2196,6 +2133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934486946709427963, guid: 8a101c42979e63d44a8b462f6efb8f06,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueLeftSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a101c42979e63d44a8b462f6efb8f06, type: 3}
@@ -2560,24 +2502,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8331060152753526817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4572687475069316273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e11639d345adb04eab0a64b0cbbc3fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  homeNetwork: {fileID: 0}
-  stage1: {fileID: 6161846114356685563}
-  stage2: {fileID: 8482672925838760705}
-  stage3: {fileID: 2670226709811616489}
-  stage4: {fileID: 7894051562629715579}
 --- !u!33 &8415891630909948906
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3676,7 +3600,6 @@ GameObject:
   - component: {fileID: 5600609237598207556}
   - component: {fileID: 3522477719533175922}
   - component: {fileID: 7196422050381772939}
-  - component: {fileID: 3735167416256600795}
   m_Layer: 0
   m_Name: Spelplan
   m_TagString: Untagged

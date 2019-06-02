@@ -1073,7 +1073,6 @@ GameObject:
   - component: {fileID: 5600609237928221076}
   - component: {fileID: 3522477719477855138}
   - component: {fileID: 7196422049907040091}
-  - component: {fileID: 3735167416316132619}
   m_Layer: 0
   m_Name: Spelplan
   m_TagString: Untagged
@@ -1162,18 +1161,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3735167416316132619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926703687824141191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520461e756d9fc440bd456c424f7f6d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1476601909540087463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1181,11 +1168,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890410519420}
     m_Modifications:
-    - target: {fileID: 597891301564097655, guid: 23588a882c6a92444ac44b694f57c340,
-        type: 3}
-      propertyPath: m_Name
-      value: RedMiddleSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 597891301564097652, guid: 23588a882c6a92444ac44b694f57c340,
         type: 3}
       propertyPath: m_RootOrder
@@ -1221,6 +1203,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -4.7700024
       objectReference: {fileID: 0}
+    - target: {fileID: 597891301564097655, guid: 23588a882c6a92444ac44b694f57c340,
+        type: 3}
+      propertyPath: m_Name
+      value: RedMiddleSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23588a882c6a92444ac44b694f57c340, type: 3}
 --- !u!4 &2031637340095169235 stripped
@@ -1236,11 +1223,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890410519420}
     m_Modifications:
-    - target: {fileID: 4898112376702888880, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
-        type: 3}
-      propertyPath: m_Name
-      value: RedLeftSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 4898112376702888883, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
         type: 3}
       propertyPath: m_RootOrder
@@ -1276,6 +1258,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 4898112376702888880, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
+        type: 3}
+      propertyPath: m_Name
+      value: RedLeftSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f, type: 3}
 --- !u!4 &7329151276426896544 stripped
@@ -1291,11 +1278,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890410519420}
     m_Modifications:
-    - target: {fileID: 3998252987217984341, guid: c2d3e828aa9e24140aba06a62a10fc92,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueMiddleSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 3998252987217984336, guid: c2d3e828aa9e24140aba06a62a10fc92,
         type: 3}
       propertyPath: m_RootOrder
@@ -1336,6 +1318,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -23.799997
       objectReference: {fileID: 0}
+    - target: {fileID: 3998252987217984341, guid: c2d3e828aa9e24140aba06a62a10fc92,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueMiddleSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d3e828aa9e24140aba06a62a10fc92, type: 3}
 --- !u!4 &283288946102181191 stripped
@@ -1351,11 +1338,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890410519420}
     m_Modifications:
-    - target: {fileID: 4270931382066602374, guid: 62463d86a027c044688fa17444443342,
-        type: 3}
-      propertyPath: m_Name
-      value: RedRightSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 4270931382066602373, guid: 62463d86a027c044688fa17444443342,
         type: 3}
       propertyPath: m_RootOrder
@@ -1401,6 +1383,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.2206975
       objectReference: {fileID: 0}
+    - target: {fileID: 4270931382066602374, guid: 62463d86a027c044688fa17444443342,
+        type: 3}
+      propertyPath: m_Name
+      value: RedRightSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62463d86a027c044688fa17444443342, type: 3}
 --- !u!4 &500119903018957765 stripped
@@ -1416,11 +1403,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890410519420}
     m_Modifications:
-    - target: {fileID: 8911995441751795416, guid: 8da52b05f4ccf2247964afff27148bf3,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueRightSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 8911995441751795419, guid: 8da52b05f4ccf2247964afff27148bf3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1446,6 +1428,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 8911995441751795416, guid: 8da52b05f4ccf2247964afff27148bf3,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueRightSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8da52b05f4ccf2247964afff27148bf3, type: 3}
 --- !u!4 &3527068371744453191 stripped
@@ -1461,11 +1448,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890410519420}
     m_Modifications:
-    - target: {fileID: 6934486946709427963, guid: 8a101c42979e63d44a8b462f6efb8f06,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueLeftSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 6934486946709427960, guid: 8a101c42979e63d44a8b462f6efb8f06,
         type: 3}
       propertyPath: m_RootOrder
@@ -1510,6 +1492,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9629276
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934486946709427963, guid: 8a101c42979e63d44a8b462f6efb8f06,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueLeftSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a101c42979e63d44a8b462f6efb8f06, type: 3}
