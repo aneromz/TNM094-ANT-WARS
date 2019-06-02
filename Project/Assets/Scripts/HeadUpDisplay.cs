@@ -42,7 +42,7 @@ public class HeadUpDisplay : MonoBehaviour
         }
 
         resourceCapacity = 20;
-        availableResources = resourceCapacity;
+        availableResources = 0;
         resourceDisplay = GetComponentInChildren<Text>();
         string output = availableResources + " / " + resourceCapacity;
         resourceDisplay.text = output;
