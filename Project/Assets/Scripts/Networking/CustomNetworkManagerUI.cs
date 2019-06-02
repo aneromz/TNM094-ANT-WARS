@@ -76,7 +76,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         exitLobbyButton.onClick.AddListener(ExitLobby);
         startGameButton.onClick.AddListener(CmdStartGame);
         stopSearchButton.onClick.AddListener(ToggleGameSearch);
-        playAgainButton.onClick.AddListener(playGame);
+        playAgainButton.onClick.AddListener(mainMenu);
 
         // Deactivate in game menu
         menuIsVisible = false;
@@ -106,7 +106,26 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
         gameOverPanel.SetActive(false);
         menuBackground.SetActive(true);
-        //NetworkManager.singleton.ServerChangeScene("StartMenu");
+ 
+    }
+    public void mainMenu()
+    {
+        menuBackground.SetActive(true);
+        gameOverPanel.SetActive(false);
+
+        // Deactivate in game menu
+        menuIsVisible = false;
+        inGameMenuPanel.SetActive(menuIsVisible);
+
+        // Activate options panel
+        startPanel.SetActive(true);
+
+        // Load start menu scene
+        //SceneManager.LoadScene("StartMenu");
+        NetworkManager.singleton.ServerChangeScene("StartMenu");
+
+        manager.StopHost();
+        discovery.Reset();
     }
     private void helpPage()
     {
