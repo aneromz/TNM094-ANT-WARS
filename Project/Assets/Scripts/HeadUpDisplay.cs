@@ -165,4 +165,13 @@ public class HeadUpDisplay : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         yield return IncreaseResourcesTick(waitTime);
     }
+
+    public void IncreaseResources(int amount)
+    {
+        availableResources += amount;
+        if (availableResources > resourceCapacity)
+            availableResources = resourceCapacity;
+
+        UpdateResourceDisplay();
+    }
 }

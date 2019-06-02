@@ -210,24 +210,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         findLobbyButton.gameObject.SetActive(!isSearchingForGame);
         hostLobbyButton.gameObject.SetActive(!isSearchingForGame);
         backOptionsButton.gameObject.SetActive(!isSearchingForGame);
-        /*
-        if (isSearchingForGame)
-        {
-            discovery.JoinGameOnRecievedBroadcast(true);
 
-            stopSearchButton.gameObject.SetActive(true);
-            findLobbyButton.gameObject.SetActive(false);
-            hostLobbyButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            discovery.JoinGameOnRecievedBroadcast(false);
-
-            stopSearchButton.gameObject.SetActive(false);
-            findLobbyButton.gameObject.SetActive(true);
-            hostLobbyButton.gameObject.SetActive(true);
-        }
-        */
     }
 
     public void ToggleMenu()
