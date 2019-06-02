@@ -17,6 +17,9 @@ public class AntSpawn : MonoBehaviour
     {
         if (team == PlayerPrefs.GetString("team"))
         {
+            // Give feedback
+            Handheld.Vibrate();
+
             if (tag == "Left")
                 hud.SpawnAntOnPosition1();
             else if (tag == "Middle")
