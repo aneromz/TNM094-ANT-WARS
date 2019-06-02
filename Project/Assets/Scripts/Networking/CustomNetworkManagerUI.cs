@@ -71,7 +71,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         backHelpButton.onClick.AddListener(startMenu);
         backOptionsButton.onClick.AddListener(startMenu);
         hostLobbyButton.onClick.AddListener(HostGame);
-        exitGameButton.onClick.AddListener(startMenu);
+        exitGameButton.onClick.AddListener(ExitGame);
         findLobbyButton.onClick.AddListener(ToggleGameSearch);
         exitLobbyButton.onClick.AddListener(ExitLobby);
         startGameButton.onClick.AddListener(CmdStartGame);
@@ -106,7 +106,7 @@ public class CustomNetworkManagerUI : NetworkBehaviour
 
         gameOverPanel.SetActive(false);
         menuBackground.SetActive(true);
-        NetworkManager.singleton.ServerChangeScene("StartMenu");
+        //NetworkManager.singleton.ServerChangeScene("StartMenu");
     }
     private void helpPage()
     {
@@ -119,14 +119,13 @@ public class CustomNetworkManagerUI : NetworkBehaviour
         helpPanel.SetActive(false);
         optionsPanel.SetActive(false);
         gameOverPanel.SetActive(false);
-        NetworkManager.singleton.ServerChangeScene("StartMenu");
+        //NetworkManager.singleton.ServerChangeScene("StartMenu");
     }
 
     public void HostGame ()
     {
         manager.StartHost(null, 4);
         discovery.StartBroadcast();
-       
 
         optionsPanel.SetActive(false);
         lobbyPanel.SetActive(true);

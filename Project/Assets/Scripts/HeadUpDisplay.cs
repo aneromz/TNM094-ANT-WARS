@@ -118,9 +118,11 @@ public class HeadUpDisplay : MonoBehaviour
     private void ToggleButtonVisibility ()
     {
         menuIsVisible = menuIsVisible ? false : true;
+        /*
         spawnButton1.gameObject.SetActive(menuIsVisible);
         spawnButton2.gameObject.SetActive(menuIsVisible);
         spawnButton3.gameObject.SetActive(menuIsVisible);
+        */
         resourceDisplay.gameObject.SetActive(menuIsVisible);
         resourceBar.gameObject.SetActive(menuIsVisible);
     }
