@@ -2566,6 +2566,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7597284907100640599, guid: b688037d3d464464e9ecccba7faf5fec,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -575
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753171255413499155, guid: b688037d3d464464e9ecccba7faf5fec,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: feffecc5a1b723042b6092d7592acf87,
+        type: 3}
     - target: {fileID: 8628936026931358147, guid: b688037d3d464464e9ecccba7faf5fec,
         type: 3}
       propertyPath: m_Name
@@ -2741,7 +2752,7 @@ PrefabInstance:
     - target: {fileID: 3887776058679665979, guid: b688037d3d464464e9ecccba7faf5fec,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 536
+      value: 538
       objectReference: {fileID: 0}
     - target: {fileID: 3887776058679665979, guid: b688037d3d464464e9ecccba7faf5fec,
         type: 3}
@@ -3820,7 +3831,7 @@ PrefabInstance:
     - target: {fileID: 1283823230395744781, guid: b688037d3d464464e9ecccba7faf5fec,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00091985584
+      value: 120.91254
       objectReference: {fileID: 0}
     - target: {fileID: 2653565252142116820, guid: b688037d3d464464e9ecccba7faf5fec,
         type: 3}
@@ -3887,20 +3898,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: spawn
       objectReference: {fileID: 0}
-    - target: {fileID: 5441565939295961170, guid: b688037d3d464464e9ecccba7faf5fec,
-        type: 3}
-      propertyPath: m_Text
-      value: "Welcome to\n\n\n\n\n\n\n\nYour main task is to destroy the enemy base
-        by sending ant warriors on different paths. Spawn ants by clicking with your
-        finger on the specific spawn points.\n\n\n\n\n\nSpawn enough ants to overpower
-        your opponent until your ants have eaten up the enemy sugar cube! \n\n\n\n\nYour
-        ant may be killed by the enemy so be sure to send as many as you can! Killing
-        ants is done by clicking on them but be careful not to kill your own. \n\n\n\n\n\nCreating
-        ants cost ant eggs. To get more ant eggs you can pick up ant eggs left behind
-        by dead ants. Spend your ant eggs carefully to outsmart your opponent! \n\nThis
-        game was made by a group of students at Link\xF6pings university as a bachelor\u2019s
-        project during the spring of 2019. \n\n\n"
-      objectReference: {fileID: 0}
     - target: {fileID: 2337438521506365039, guid: b688037d3d464464e9ecccba7faf5fec,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3930,6 +3927,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -3105.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 3545402802821952721, guid: b688037d3d464464e9ecccba7faf5fec,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3108
+      objectReference: {fileID: 0}
+    - target: {fileID: 3545402802821952721, guid: b688037d3d464464e9ecccba7faf5fec,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 432
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188687960638625088, guid: b688037d3d464464e9ecccba7faf5fec,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7686
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b688037d3d464464e9ecccba7faf5fec, type: 3}
