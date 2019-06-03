@@ -71,7 +71,5 @@ public class PlayerObject : NetworkBehaviour {
         GameObject.Find("Lobby").SetActive(false);
         GameObject.Find("Menu Background").SetActive(false);
         NetworkManager.singleton.ServerChangeScene("Game");
-        //NetworkManager.singleton.ServerChangeScene("GameNoAR");
-        //SceneManager.LoadScene(1);
     }
 }

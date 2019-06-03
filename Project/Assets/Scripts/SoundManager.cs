@@ -6,25 +6,26 @@ public class SoundManager : MonoBehaviour
 {
 
     public static AudioClip SplatSound;
+    public static AudioClip EggSound;
     static AudioSource audioSrc;
 
     // Start is called before the first frame update
     void Start()
     {
         SplatSound = Resources.Load<AudioClip>("SplatSound");
+        EggSound = Resources.Load<AudioClip>("egg_sound");
 
         audioSrc = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public static void PlaySound()
+    public static void PlaySplatSound()
     {
         audioSrc.PlayOneShot(SplatSound);
+    }
+
+    public static void PlayEggSound()
+    {
+        audioSrc.PlayOneShot(EggSound);
     }
 
 

@@ -122,3 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020789024a3741a4e9db4a4401707789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  antEggPrefab: {fileID: 6559973179674475189, guid: 05be466f1f057754b96d9da5fd80d7b1,
+    type: 3}

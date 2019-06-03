@@ -5,10 +5,18 @@ public class AntBody : MonoBehaviour
 {
     void OnMouseDown()
     {
-        SoundManager.PlaySound();
+        SoundManager.PlaySplatSound();
 
-        AgentControl ant = GetComponentInParent<AgentControl>();
-        GameObject.Find(PlayerPrefs.GetString("uniqueIdentity")).GetComponentInChildren<NetworkObjectHandler>().TellServerToDestroyAnt(ant.gameObject);
+        GameObject ant = GetComponentInParent<AgentControl>().gameObject;
+        NetworkObjectHandler networkHandler = GameObject.Find(PlayerPrefs.GetString("uniqueIdentity")).GetComponentInChildren<NetworkObjectHandler>();
+        networkHandler.TellServerToDestroyAnt(ant.gameObject);
+
+        // 20 percent chance to drop ant egg
+        float rand = Random.value;
+        if (rand < 0.1f)
+        {
+            networkHandler.TellServerToSpawnAntEgg(gameObject);
+        }
     }
 
 }
