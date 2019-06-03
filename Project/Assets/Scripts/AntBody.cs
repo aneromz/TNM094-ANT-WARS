@@ -5,7 +5,7 @@ public class AntBody : MonoBehaviour
 {
     void OnMouseDown()
     {
-        SoundManager.PlaySound();
+        SoundManager.PlaySplatSound();
 
         GameObject ant = GetComponentInParent<AgentControl>().gameObject;
         NetworkObjectHandler networkHandler = GameObject.Find(PlayerPrefs.GetString("uniqueIdentity")).GetComponentInChildren<NetworkObjectHandler>();

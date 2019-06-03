@@ -21,6 +21,8 @@ public class AntEgg : NetworkBehaviour
 
     private void OnMouseDown()
     {
+        SoundManager.PlayEggSound();
+
         GameObject.Find(PlayerPrefs.GetString("uniqueIdentity")).GetComponentInChildren<NetworkObjectHandler>().TellServerToDestroyAntEgg(gameObject);
         FindObjectOfType<HeadUpDisplay>().IncreaseResources(value);
     }
