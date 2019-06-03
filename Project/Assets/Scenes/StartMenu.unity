@@ -666,11 +666,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 597891301564097655, guid: 23588a882c6a92444ac44b694f57c340,
-        type: 3}
-      propertyPath: m_Name
-      value: RedMiddleSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 597891301564097652, guid: 23588a882c6a92444ac44b694f57c340,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -725,6 +720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 597891301564097655, guid: 23588a882c6a92444ac44b694f57c340,
+        type: 3}
+      propertyPath: m_Name
+      value: RedMiddleSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3308390322522533637, guid: 23588a882c6a92444ac44b694f57c340, type: 3}
@@ -977,11 +977,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724839890467937452}
     m_Modifications:
-    - target: {fileID: 4898112376702888880, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
-        type: 3}
-      propertyPath: m_Name
-      value: RedLeftSpawn
-      objectReference: {fileID: 0}
     - target: {fileID: 4898112376702888883, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1036,6 +1031,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898112376702888880, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f,
+        type: 3}
+      propertyPath: m_Name
+      value: RedLeftSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1555112797757546183, guid: a19bf13e97aeefa4a9d7d8cdfa57c08f, type: 3}
@@ -2553,7 +2553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7343796570352290365}
   m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0.047500003, z: 0}
+  m_LocalPosition: {x: 0, y: 0.57, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 7345368139901728783}

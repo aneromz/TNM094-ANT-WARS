@@ -43,7 +43,7 @@ public class NetworkObjectHandler : NetworkBehaviour
     private void CmdSpawnAntEgg(GameObject ant)
     {
         GameObject egg = Instantiate(antEggPrefab);
-        egg.transform.position = ant.transform.position + new Vector3(0f, 1f, 0f);
+        egg.transform.position = ant.transform.position;
         
         NetworkServer.SpawnWithClientAuthority(egg, connectionToClient);
     }

@@ -13,9 +13,9 @@ public class AntBody : MonoBehaviour
 
         // 20 percent chance to drop ant egg
         float rand = Random.value;
-        if (rand < 0.2f)
+        if (rand < 0.1f)
         {
-            networkHandler.TellServerToSpawnAntEgg(ant.gameObject);
+            networkHandler.TellServerToSpawnAntEgg(gameObject);
         }
     }
 

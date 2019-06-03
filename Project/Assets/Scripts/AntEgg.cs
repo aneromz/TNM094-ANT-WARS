@@ -9,7 +9,9 @@ public class AntEgg : NetworkBehaviour
     void Start()
     {
         updatedRotation = Vector3.zero;
+        updatedRotation.x = 90;
         transform.parent = GameObject.Find("Map Content").transform;
+        transform.localPosition += new Vector3(0f, 1f, 0f);
     }
 
     void Update()
@@ -25,8 +27,9 @@ public class AntEgg : NetworkBehaviour
 
     private void RotateObject()
     {
-        updatedRotation.z = 20f * Time.deltaTime;
-        transform.Rotate(updatedRotation);
+        updatedRotation.z = 25f * Time.time;
+
+        transform.localRotation = Quaternion.Euler(updatedRotation);
     }
 
     [Command]
