@@ -8,15 +8,23 @@ public class AntEgg : NetworkBehaviour
 
     void Start()
     {
-        updatedRotation = Vector3.zero;
-        updatedRotation.x = 90;
-        transform.parent = GameObject.Find("Map Content").transform;
-        transform.localPosition += new Vector3(0f, 1f, 0f);
+        SetEggPosition();
     }
 
     void Update()
     {
         RotateObject();
+    }
+
+    private void SetEggPosition()
+    {
+        updatedRotation = Vector3.zero;
+        updatedRotation.x = 90;
+
+        Transform sceneTransform = GameObject.Find("Map Content").transform;
+        transform.position = sceneTransform.TransformPoint(transform.position);
+        transform.parent = sceneTransform;
+        transform.localPosition += new Vector3(0f, 1f, 0f);
     }
 
     private void OnMouseDown()

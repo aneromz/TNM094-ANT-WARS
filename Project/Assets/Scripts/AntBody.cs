@@ -15,7 +15,7 @@ public class AntBody : MonoBehaviour
         float rand = Random.value;
         if (rand < 0.1f)
         {
-            networkHandler.TellServerToSpawnAntEgg(gameObject);
+            networkHandler.TellServerToSpawnAntEgg(ant.gameObject);
         }
     }
 
